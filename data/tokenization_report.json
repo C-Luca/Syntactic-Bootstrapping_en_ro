@@ -1,0 +1,2578 @@
+{
+  "lexicon_path": "configs\\lexicon_en_ro.json",
+  "models_inspected": [
+    "Qwen/Qwen2.5-3B",
+    "utter-project/EuroLLM-1.7B",
+    "xlm-roberta-base"
+  ],
+  "outlier_z_threshold": 2.0,
+  "results_by_model": {
+    "Qwen/Qwen2.5-3B": {
+      "tokenizer_mode": "OFFLINE_SIMULATION_FALLBACK",
+      "languages": {
+        "en": {
+          "mean_subword_count": 2.775,
+          "sd_subword_count": 0.075,
+          "real_word_collisions": [],
+          "outliers_flagged": [
+            "fendle"
+          ],
+          "pseudoverb_details": [
+            {
+              "id": "v01",
+              "lemma": "dax",
+              "forms": {
+                "lemma": "dax",
+                "past": "daxed",
+                "pres_3sg": "daxes",
+                "participle": "daxing"
+              },
+              "subword_counts": {
+                "lemma": 2,
+                "past": 3,
+                "pres_3sg": 3,
+                "participle": 3
+              },
+              "subwords": {
+                "lemma": [
+                  "da",
+                  "x"
+                ],
+                "past": [
+                  "da",
+                  "x",
+                  "ed"
+                ],
+                "pres_3sg": [
+                  "da",
+                  "x",
+                  "es"
+                ],
+                "participle": [
+                  "da",
+                  "x",
+                  "ing"
+                ]
+              },
+              "mean_subword_count": 2.75,
+              "is_single_token_real_word": false,
+              "z_score": -0.33,
+              "is_outlier": false
+            },
+            {
+              "id": "v02",
+              "lemma": "blick",
+              "forms": {
+                "lemma": "blick",
+                "past": "blicked",
+                "pres_3sg": "blicks",
+                "participle": "blicking"
+              },
+              "subword_counts": {
+                "lemma": 2,
+                "past": 3,
+                "pres_3sg": 3,
+                "participle": 3
+              },
+              "subwords": {
+                "lemma": [
+                  "bl",
+                  "ick"
+                ],
+                "past": [
+                  "bl",
+                  "ick",
+                  "ed"
+                ],
+                "pres_3sg": [
+                  "bl",
+                  "ick",
+                  "s"
+                ],
+                "participle": [
+                  "bl",
+                  "ick",
+                  "ing"
+                ]
+              },
+              "mean_subword_count": 2.75,
+              "is_single_token_real_word": false,
+              "z_score": -0.33,
+              "is_outlier": false
+            },
+            {
+              "id": "v03",
+              "lemma": "gorp",
+              "forms": {
+                "lemma": "gorp",
+                "past": "gorped",
+                "pres_3sg": "gorps",
+                "participle": "gorping"
+              },
+              "subword_counts": {
+                "lemma": 2,
+                "past": 3,
+                "pres_3sg": 3,
+                "participle": 3
+              },
+              "subwords": {
+                "lemma": [
+                  "go",
+                  "rp"
+                ],
+                "past": [
+                  "go",
+                  "rp",
+                  "ed"
+                ],
+                "pres_3sg": [
+                  "go",
+                  "rp",
+                  "s"
+                ],
+                "participle": [
+                  "go",
+                  "rp",
+                  "ing"
+                ]
+              },
+              "mean_subword_count": 2.75,
+              "is_single_token_real_word": false,
+              "z_score": -0.33,
+              "is_outlier": false
+            },
+            {
+              "id": "v04",
+              "lemma": "pilk",
+              "forms": {
+                "lemma": "pilk",
+                "past": "pilked",
+                "pres_3sg": "pilks",
+                "participle": "pilking"
+              },
+              "subword_counts": {
+                "lemma": 2,
+                "past": 3,
+                "pres_3sg": 3,
+                "participle": 3
+              },
+              "subwords": {
+                "lemma": [
+                  "pi",
+                  "lk"
+                ],
+                "past": [
+                  "pi",
+                  "lk",
+                  "ed"
+                ],
+                "pres_3sg": [
+                  "pi",
+                  "lk",
+                  "s"
+                ],
+                "participle": [
+                  "pi",
+                  "lk",
+                  "ing"
+                ]
+              },
+              "mean_subword_count": 2.75,
+              "is_single_token_real_word": false,
+              "z_score": -0.33,
+              "is_outlier": false
+            },
+            {
+              "id": "v05",
+              "lemma": "zorf",
+              "forms": {
+                "lemma": "zorf",
+                "past": "zorfed",
+                "pres_3sg": "zorfs",
+                "participle": "zorfing"
+              },
+              "subword_counts": {
+                "lemma": 2,
+                "past": 3,
+                "pres_3sg": 3,
+                "participle": 3
+              },
+              "subwords": {
+                "lemma": [
+                  "zo",
+                  "rf"
+                ],
+                "past": [
+                  "zo",
+                  "rf",
+                  "ed"
+                ],
+                "pres_3sg": [
+                  "zo",
+                  "rf",
+                  "s"
+                ],
+                "participle": [
+                  "zo",
+                  "rf",
+                  "ing"
+                ]
+              },
+              "mean_subword_count": 2.75,
+              "is_single_token_real_word": false,
+              "z_score": -0.33,
+              "is_outlier": false
+            },
+            {
+              "id": "v06",
+              "lemma": "tunk",
+              "forms": {
+                "lemma": "tunk",
+                "past": "tunked",
+                "pres_3sg": "tunks",
+                "participle": "tunking"
+              },
+              "subword_counts": {
+                "lemma": 2,
+                "past": 3,
+                "pres_3sg": 3,
+                "participle": 3
+              },
+              "subwords": {
+                "lemma": [
+                  "tu",
+                  "nk"
+                ],
+                "past": [
+                  "tu",
+                  "nk",
+                  "ed"
+                ],
+                "pres_3sg": [
+                  "tu",
+                  "nk",
+                  "s"
+                ],
+                "participle": [
+                  "tu",
+                  "nk",
+                  "ing"
+                ]
+              },
+              "mean_subword_count": 2.75,
+              "is_single_token_real_word": false,
+              "z_score": -0.33,
+              "is_outlier": false
+            },
+            {
+              "id": "v07",
+              "lemma": "vabe",
+              "forms": {
+                "lemma": "vabe",
+                "past": "vabed",
+                "pres_3sg": "vabes",
+                "participle": "vabing"
+              },
+              "subword_counts": {
+                "lemma": 2,
+                "past": 3,
+                "pres_3sg": 3,
+                "participle": 3
+              },
+              "subwords": {
+                "lemma": [
+                  "va",
+                  "be"
+                ],
+                "past": [
+                  "va",
+                  "b",
+                  "ed"
+                ],
+                "pres_3sg": [
+                  "va",
+                  "b",
+                  "es"
+                ],
+                "participle": [
+                  "va",
+                  "b",
+                  "ing"
+                ]
+              },
+              "mean_subword_count": 2.75,
+              "is_single_token_real_word": false,
+              "z_score": -0.33,
+              "is_outlier": false
+            },
+            {
+              "id": "v08",
+              "lemma": "sarp",
+              "forms": {
+                "lemma": "sarp",
+                "past": "sarped",
+                "pres_3sg": "sarps",
+                "participle": "sarping"
+              },
+              "subword_counts": {
+                "lemma": 2,
+                "past": 3,
+                "pres_3sg": 3,
+                "participle": 3
+              },
+              "subwords": {
+                "lemma": [
+                  "sa",
+                  "rp"
+                ],
+                "past": [
+                  "sa",
+                  "rp",
+                  "ed"
+                ],
+                "pres_3sg": [
+                  "sa",
+                  "rp",
+                  "s"
+                ],
+                "participle": [
+                  "sa",
+                  "rp",
+                  "ing"
+                ]
+              },
+              "mean_subword_count": 2.75,
+              "is_single_token_real_word": false,
+              "z_score": -0.33,
+              "is_outlier": false
+            },
+            {
+              "id": "v09",
+              "lemma": "moke",
+              "forms": {
+                "lemma": "moke",
+                "past": "moked",
+                "pres_3sg": "mokes",
+                "participle": "moking"
+              },
+              "subword_counts": {
+                "lemma": 2,
+                "past": 3,
+                "pres_3sg": 3,
+                "participle": 3
+              },
+              "subwords": {
+                "lemma": [
+                  "mo",
+                  "ke"
+                ],
+                "past": [
+                  "mo",
+                  "k",
+                  "ed"
+                ],
+                "pres_3sg": [
+                  "mo",
+                  "k",
+                  "es"
+                ],
+                "participle": [
+                  "mo",
+                  "k",
+                  "ing"
+                ]
+              },
+              "mean_subword_count": 2.75,
+              "is_single_token_real_word": false,
+              "z_score": -0.33,
+              "is_outlier": false
+            },
+            {
+              "id": "v10",
+              "lemma": "fendle",
+              "forms": {
+                "lemma": "fendle",
+                "past": "fendled",
+                "pres_3sg": "fendles",
+                "participle": "fendling"
+              },
+              "subword_counts": {
+                "lemma": 3,
+                "past": 3,
+                "pres_3sg": 3,
+                "participle": 3
+              },
+              "subwords": {
+                "lemma": [
+                  "fe",
+                  "nd",
+                  "le"
+                ],
+                "past": [
+                  "fe",
+                  "ndl",
+                  "ed"
+                ],
+                "pres_3sg": [
+                  "fe",
+                  "ndl",
+                  "es"
+                ],
+                "participle": [
+                  "fe",
+                  "ndl",
+                  "ing"
+                ]
+              },
+              "mean_subword_count": 3.0,
+              "is_single_token_real_word": false,
+              "z_score": 3.0,
+              "is_outlier": true
+            }
+          ]
+        },
+        "ro": {
+          "mean_subword_count": 3.0,
+          "sd_subword_count": 0.0,
+          "real_word_collisions": [],
+          "outliers_flagged": [],
+          "pseudoverb_details": [
+            {
+              "id": "v01",
+              "lemma": "daxa",
+              "forms": {
+                "lemma": "daxa",
+                "past_part": "daxat",
+                "pres_3sg": "daxează",
+                "subj_3sg": "daxeze"
+              },
+              "subword_counts": {
+                "lemma": 3,
+                "past_part": 3,
+                "pres_3sg": 3,
+                "subj_3sg": 3
+              },
+              "subwords": {
+                "lemma": [
+                  "da",
+                  "x",
+                  "a"
+                ],
+                "past_part": [
+                  "da",
+                  "x",
+                  "at"
+                ],
+                "pres_3sg": [
+                  "da",
+                  "x",
+                  "ează"
+                ],
+                "subj_3sg": [
+                  "da",
+                  "x",
+                  "eze"
+                ]
+              },
+              "mean_subword_count": 3.0,
+              "is_single_token_real_word": false,
+              "z_score": 0.0,
+              "is_outlier": false
+            },
+            {
+              "id": "v02",
+              "lemma": "blica",
+              "forms": {
+                "lemma": "blica",
+                "past_part": "blicat",
+                "pres_3sg": "blichează",
+                "subj_3sg": "blicheze"
+              },
+              "subword_counts": {
+                "lemma": 3,
+                "past_part": 3,
+                "pres_3sg": 3,
+                "subj_3sg": 3
+              },
+              "subwords": {
+                "lemma": [
+                  "bl",
+                  "ic",
+                  "a"
+                ],
+                "past_part": [
+                  "bl",
+                  "ic",
+                  "at"
+                ],
+                "pres_3sg": [
+                  "bl",
+                  "ich",
+                  "ează"
+                ],
+                "subj_3sg": [
+                  "bl",
+                  "ich",
+                  "eze"
+                ]
+              },
+              "mean_subword_count": 3.0,
+              "is_single_token_real_word": false,
+              "z_score": 0.0,
+              "is_outlier": false
+            },
+            {
+              "id": "v03",
+              "lemma": "gorpa",
+              "forms": {
+                "lemma": "gorpa",
+                "past_part": "gorpat",
+                "pres_3sg": "gorpează",
+                "subj_3sg": "gorpeze"
+              },
+              "subword_counts": {
+                "lemma": 3,
+                "past_part": 3,
+                "pres_3sg": 3,
+                "subj_3sg": 3
+              },
+              "subwords": {
+                "lemma": [
+                  "go",
+                  "rp",
+                  "a"
+                ],
+                "past_part": [
+                  "go",
+                  "rp",
+                  "at"
+                ],
+                "pres_3sg": [
+                  "go",
+                  "rp",
+                  "ează"
+                ],
+                "subj_3sg": [
+                  "go",
+                  "rp",
+                  "eze"
+                ]
+              },
+              "mean_subword_count": 3.0,
+              "is_single_token_real_word": false,
+              "z_score": 0.0,
+              "is_outlier": false
+            },
+            {
+              "id": "v04",
+              "lemma": "pilca",
+              "forms": {
+                "lemma": "pilca",
+                "past_part": "pilcat",
+                "pres_3sg": "pilchează",
+                "subj_3sg": "pilcheze"
+              },
+              "subword_counts": {
+                "lemma": 3,
+                "past_part": 3,
+                "pres_3sg": 3,
+                "subj_3sg": 3
+              },
+              "subwords": {
+                "lemma": [
+                  "pi",
+                  "lc",
+                  "a"
+                ],
+                "past_part": [
+                  "pi",
+                  "lc",
+                  "at"
+                ],
+                "pres_3sg": [
+                  "pi",
+                  "lch",
+                  "ează"
+                ],
+                "subj_3sg": [
+                  "pi",
+                  "lch",
+                  "eze"
+                ]
+              },
+              "mean_subword_count": 3.0,
+              "is_single_token_real_word": false,
+              "z_score": 0.0,
+              "is_outlier": false
+            },
+            {
+              "id": "v05",
+              "lemma": "zorfa",
+              "forms": {
+                "lemma": "zorfa",
+                "past_part": "zorfat",
+                "pres_3sg": "zorfează",
+                "subj_3sg": "zorfeze"
+              },
+              "subword_counts": {
+                "lemma": 3,
+                "past_part": 3,
+                "pres_3sg": 3,
+                "subj_3sg": 3
+              },
+              "subwords": {
+                "lemma": [
+                  "zo",
+                  "rf",
+                  "a"
+                ],
+                "past_part": [
+                  "zo",
+                  "rf",
+                  "at"
+                ],
+                "pres_3sg": [
+                  "zo",
+                  "rf",
+                  "ează"
+                ],
+                "subj_3sg": [
+                  "zo",
+                  "rf",
+                  "eze"
+                ]
+              },
+              "mean_subword_count": 3.0,
+              "is_single_token_real_word": false,
+              "z_score": 0.0,
+              "is_outlier": false
+            },
+            {
+              "id": "v06",
+              "lemma": "tunca",
+              "forms": {
+                "lemma": "tunca",
+                "past_part": "tuncat",
+                "pres_3sg": "tunchează",
+                "subj_3sg": "tuncheze"
+              },
+              "subword_counts": {
+                "lemma": 3,
+                "past_part": 3,
+                "pres_3sg": 3,
+                "subj_3sg": 3
+              },
+              "subwords": {
+                "lemma": [
+                  "tu",
+                  "nc",
+                  "a"
+                ],
+                "past_part": [
+                  "tu",
+                  "nc",
+                  "at"
+                ],
+                "pres_3sg": [
+                  "tu",
+                  "nch",
+                  "ează"
+                ],
+                "subj_3sg": [
+                  "tu",
+                  "nch",
+                  "eze"
+                ]
+              },
+              "mean_subword_count": 3.0,
+              "is_single_token_real_word": false,
+              "z_score": 0.0,
+              "is_outlier": false
+            },
+            {
+              "id": "v07",
+              "lemma": "vaba",
+              "forms": {
+                "lemma": "vaba",
+                "past_part": "vabat",
+                "pres_3sg": "vabează",
+                "subj_3sg": "vabeze"
+              },
+              "subword_counts": {
+                "lemma": 3,
+                "past_part": 3,
+                "pres_3sg": 3,
+                "subj_3sg": 3
+              },
+              "subwords": {
+                "lemma": [
+                  "va",
+                  "b",
+                  "a"
+                ],
+                "past_part": [
+                  "va",
+                  "b",
+                  "at"
+                ],
+                "pres_3sg": [
+                  "va",
+                  "b",
+                  "ează"
+                ],
+                "subj_3sg": [
+                  "va",
+                  "b",
+                  "eze"
+                ]
+              },
+              "mean_subword_count": 3.0,
+              "is_single_token_real_word": false,
+              "z_score": 0.0,
+              "is_outlier": false
+            },
+            {
+              "id": "v08",
+              "lemma": "sarpa",
+              "forms": {
+                "lemma": "sarpa",
+                "past_part": "sarpat",
+                "pres_3sg": "sarpează",
+                "subj_3sg": "sarpeze"
+              },
+              "subword_counts": {
+                "lemma": 3,
+                "past_part": 3,
+                "pres_3sg": 3,
+                "subj_3sg": 3
+              },
+              "subwords": {
+                "lemma": [
+                  "sa",
+                  "rp",
+                  "a"
+                ],
+                "past_part": [
+                  "sa",
+                  "rp",
+                  "at"
+                ],
+                "pres_3sg": [
+                  "sa",
+                  "rp",
+                  "ează"
+                ],
+                "subj_3sg": [
+                  "sa",
+                  "rp",
+                  "eze"
+                ]
+              },
+              "mean_subword_count": 3.0,
+              "is_single_token_real_word": false,
+              "z_score": 0.0,
+              "is_outlier": false
+            },
+            {
+              "id": "v09",
+              "lemma": "moca",
+              "forms": {
+                "lemma": "moca",
+                "past_part": "mocat",
+                "pres_3sg": "mochează",
+                "subj_3sg": "mocheze"
+              },
+              "subword_counts": {
+                "lemma": 3,
+                "past_part": 3,
+                "pres_3sg": 3,
+                "subj_3sg": 3
+              },
+              "subwords": {
+                "lemma": [
+                  "mo",
+                  "c",
+                  "a"
+                ],
+                "past_part": [
+                  "mo",
+                  "c",
+                  "at"
+                ],
+                "pres_3sg": [
+                  "mo",
+                  "ch",
+                  "ează"
+                ],
+                "subj_3sg": [
+                  "mo",
+                  "ch",
+                  "eze"
+                ]
+              },
+              "mean_subword_count": 3.0,
+              "is_single_token_real_word": false,
+              "z_score": 0.0,
+              "is_outlier": false
+            },
+            {
+              "id": "v10",
+              "lemma": "fendui",
+              "forms": {
+                "lemma": "fendui",
+                "past_part": "fenduit",
+                "pres_3sg": "fenduiește",
+                "subj_3sg": "fenduiască"
+              },
+              "subword_counts": {
+                "lemma": 3,
+                "past_part": 3,
+                "pres_3sg": 3,
+                "subj_3sg": 3
+              },
+              "subwords": {
+                "lemma": [
+                  "fe",
+                  "nd",
+                  "ui"
+                ],
+                "past_part": [
+                  "fe",
+                  "nd",
+                  "uit"
+                ],
+                "pres_3sg": [
+                  "fe",
+                  "ndu",
+                  "iește"
+                ],
+                "subj_3sg": [
+                  "fe",
+                  "nd",
+                  "uiască"
+                ]
+              },
+              "mean_subword_count": 3.0,
+              "is_single_token_real_word": false,
+              "z_score": 0.0,
+              "is_outlier": false
+            }
+          ]
+        }
+      }
+    },
+    "utter-project/EuroLLM-1.7B": {
+      "tokenizer_mode": "OFFLINE_SIMULATION_FALLBACK",
+      "languages": {
+        "en": {
+          "mean_subword_count": 2.775,
+          "sd_subword_count": 0.075,
+          "real_word_collisions": [],
+          "outliers_flagged": [
+            "fendle"
+          ],
+          "pseudoverb_details": [
+            {
+              "id": "v01",
+              "lemma": "dax",
+              "forms": {
+                "lemma": "dax",
+                "past": "daxed",
+                "pres_3sg": "daxes",
+                "participle": "daxing"
+              },
+              "subword_counts": {
+                "lemma": 2,
+                "past": 3,
+                "pres_3sg": 3,
+                "participle": 3
+              },
+              "subwords": {
+                "lemma": [
+                  "da",
+                  "x"
+                ],
+                "past": [
+                  "da",
+                  "x",
+                  "ed"
+                ],
+                "pres_3sg": [
+                  "da",
+                  "x",
+                  "es"
+                ],
+                "participle": [
+                  "da",
+                  "x",
+                  "ing"
+                ]
+              },
+              "mean_subword_count": 2.75,
+              "is_single_token_real_word": false,
+              "z_score": -0.33,
+              "is_outlier": false
+            },
+            {
+              "id": "v02",
+              "lemma": "blick",
+              "forms": {
+                "lemma": "blick",
+                "past": "blicked",
+                "pres_3sg": "blicks",
+                "participle": "blicking"
+              },
+              "subword_counts": {
+                "lemma": 2,
+                "past": 3,
+                "pres_3sg": 3,
+                "participle": 3
+              },
+              "subwords": {
+                "lemma": [
+                  "bli",
+                  "ck"
+                ],
+                "past": [
+                  "bli",
+                  "ck",
+                  "ed"
+                ],
+                "pres_3sg": [
+                  "bli",
+                  "ck",
+                  "s"
+                ],
+                "participle": [
+                  "bli",
+                  "ck",
+                  "ing"
+                ]
+              },
+              "mean_subword_count": 2.75,
+              "is_single_token_real_word": false,
+              "z_score": -0.33,
+              "is_outlier": false
+            },
+            {
+              "id": "v03",
+              "lemma": "gorp",
+              "forms": {
+                "lemma": "gorp",
+                "past": "gorped",
+                "pres_3sg": "gorps",
+                "participle": "gorping"
+              },
+              "subword_counts": {
+                "lemma": 2,
+                "past": 3,
+                "pres_3sg": 3,
+                "participle": 3
+              },
+              "subwords": {
+                "lemma": [
+                  "gor",
+                  "p"
+                ],
+                "past": [
+                  "gor",
+                  "p",
+                  "ed"
+                ],
+                "pres_3sg": [
+                  "gor",
+                  "p",
+                  "s"
+                ],
+                "participle": [
+                  "gor",
+                  "p",
+                  "ing"
+                ]
+              },
+              "mean_subword_count": 2.75,
+              "is_single_token_real_word": false,
+              "z_score": -0.33,
+              "is_outlier": false
+            },
+            {
+              "id": "v04",
+              "lemma": "pilk",
+              "forms": {
+                "lemma": "pilk",
+                "past": "pilked",
+                "pres_3sg": "pilks",
+                "participle": "pilking"
+              },
+              "subword_counts": {
+                "lemma": 2,
+                "past": 3,
+                "pres_3sg": 3,
+                "participle": 3
+              },
+              "subwords": {
+                "lemma": [
+                  "pil",
+                  "k"
+                ],
+                "past": [
+                  "pil",
+                  "k",
+                  "ed"
+                ],
+                "pres_3sg": [
+                  "pil",
+                  "k",
+                  "s"
+                ],
+                "participle": [
+                  "pil",
+                  "k",
+                  "ing"
+                ]
+              },
+              "mean_subword_count": 2.75,
+              "is_single_token_real_word": false,
+              "z_score": -0.33,
+              "is_outlier": false
+            },
+            {
+              "id": "v05",
+              "lemma": "zorf",
+              "forms": {
+                "lemma": "zorf",
+                "past": "zorfed",
+                "pres_3sg": "zorfs",
+                "participle": "zorfing"
+              },
+              "subword_counts": {
+                "lemma": 2,
+                "past": 3,
+                "pres_3sg": 3,
+                "participle": 3
+              },
+              "subwords": {
+                "lemma": [
+                  "zor",
+                  "f"
+                ],
+                "past": [
+                  "zor",
+                  "f",
+                  "ed"
+                ],
+                "pres_3sg": [
+                  "zor",
+                  "f",
+                  "s"
+                ],
+                "participle": [
+                  "zor",
+                  "f",
+                  "ing"
+                ]
+              },
+              "mean_subword_count": 2.75,
+              "is_single_token_real_word": false,
+              "z_score": -0.33,
+              "is_outlier": false
+            },
+            {
+              "id": "v06",
+              "lemma": "tunk",
+              "forms": {
+                "lemma": "tunk",
+                "past": "tunked",
+                "pres_3sg": "tunks",
+                "participle": "tunking"
+              },
+              "subword_counts": {
+                "lemma": 2,
+                "past": 3,
+                "pres_3sg": 3,
+                "participle": 3
+              },
+              "subwords": {
+                "lemma": [
+                  "tun",
+                  "k"
+                ],
+                "past": [
+                  "tun",
+                  "k",
+                  "ed"
+                ],
+                "pres_3sg": [
+                  "tun",
+                  "k",
+                  "s"
+                ],
+                "participle": [
+                  "tun",
+                  "k",
+                  "ing"
+                ]
+              },
+              "mean_subword_count": 2.75,
+              "is_single_token_real_word": false,
+              "z_score": -0.33,
+              "is_outlier": false
+            },
+            {
+              "id": "v07",
+              "lemma": "vabe",
+              "forms": {
+                "lemma": "vabe",
+                "past": "vabed",
+                "pres_3sg": "vabes",
+                "participle": "vabing"
+              },
+              "subword_counts": {
+                "lemma": 2,
+                "past": 3,
+                "pres_3sg": 3,
+                "participle": 3
+              },
+              "subwords": {
+                "lemma": [
+                  "vab",
+                  "e"
+                ],
+                "past": [
+                  "va",
+                  "b",
+                  "ed"
+                ],
+                "pres_3sg": [
+                  "va",
+                  "b",
+                  "es"
+                ],
+                "participle": [
+                  "va",
+                  "b",
+                  "ing"
+                ]
+              },
+              "mean_subword_count": 2.75,
+              "is_single_token_real_word": false,
+              "z_score": -0.33,
+              "is_outlier": false
+            },
+            {
+              "id": "v08",
+              "lemma": "sarp",
+              "forms": {
+                "lemma": "sarp",
+                "past": "sarped",
+                "pres_3sg": "sarps",
+                "participle": "sarping"
+              },
+              "subword_counts": {
+                "lemma": 2,
+                "past": 3,
+                "pres_3sg": 3,
+                "participle": 3
+              },
+              "subwords": {
+                "lemma": [
+                  "sar",
+                  "p"
+                ],
+                "past": [
+                  "sar",
+                  "p",
+                  "ed"
+                ],
+                "pres_3sg": [
+                  "sar",
+                  "p",
+                  "s"
+                ],
+                "participle": [
+                  "sar",
+                  "p",
+                  "ing"
+                ]
+              },
+              "mean_subword_count": 2.75,
+              "is_single_token_real_word": false,
+              "z_score": -0.33,
+              "is_outlier": false
+            },
+            {
+              "id": "v09",
+              "lemma": "moke",
+              "forms": {
+                "lemma": "moke",
+                "past": "moked",
+                "pres_3sg": "mokes",
+                "participle": "moking"
+              },
+              "subword_counts": {
+                "lemma": 2,
+                "past": 3,
+                "pres_3sg": 3,
+                "participle": 3
+              },
+              "subwords": {
+                "lemma": [
+                  "mok",
+                  "e"
+                ],
+                "past": [
+                  "mo",
+                  "k",
+                  "ed"
+                ],
+                "pres_3sg": [
+                  "mo",
+                  "k",
+                  "es"
+                ],
+                "participle": [
+                  "mo",
+                  "k",
+                  "ing"
+                ]
+              },
+              "mean_subword_count": 2.75,
+              "is_single_token_real_word": false,
+              "z_score": -0.33,
+              "is_outlier": false
+            },
+            {
+              "id": "v10",
+              "lemma": "fendle",
+              "forms": {
+                "lemma": "fendle",
+                "past": "fendled",
+                "pres_3sg": "fendles",
+                "participle": "fendling"
+              },
+              "subword_counts": {
+                "lemma": 3,
+                "past": 3,
+                "pres_3sg": 3,
+                "participle": 3
+              },
+              "subwords": {
+                "lemma": [
+                  "fen",
+                  "d",
+                  "le"
+                ],
+                "past": [
+                  "fen",
+                  "dl",
+                  "ed"
+                ],
+                "pres_3sg": [
+                  "fen",
+                  "dl",
+                  "es"
+                ],
+                "participle": [
+                  "fen",
+                  "dl",
+                  "ing"
+                ]
+              },
+              "mean_subword_count": 3.0,
+              "is_single_token_real_word": false,
+              "z_score": 3.0,
+              "is_outlier": true
+            }
+          ]
+        },
+        "ro": {
+          "mean_subword_count": 3.0,
+          "sd_subword_count": 0.0,
+          "real_word_collisions": [],
+          "outliers_flagged": [],
+          "pseudoverb_details": [
+            {
+              "id": "v01",
+              "lemma": "daxa",
+              "forms": {
+                "lemma": "daxa",
+                "past_part": "daxat",
+                "pres_3sg": "daxează",
+                "subj_3sg": "daxeze"
+              },
+              "subword_counts": {
+                "lemma": 3,
+                "past_part": 3,
+                "pres_3sg": 3,
+                "subj_3sg": 3
+              },
+              "subwords": {
+                "lemma": [
+                  "da",
+                  "x",
+                  "a"
+                ],
+                "past_part": [
+                  "da",
+                  "x",
+                  "at"
+                ],
+                "pres_3sg": [
+                  "da",
+                  "x",
+                  "ează"
+                ],
+                "subj_3sg": [
+                  "da",
+                  "x",
+                  "eze"
+                ]
+              },
+              "mean_subword_count": 3.0,
+              "is_single_token_real_word": false,
+              "z_score": 0.0,
+              "is_outlier": false
+            },
+            {
+              "id": "v02",
+              "lemma": "blica",
+              "forms": {
+                "lemma": "blica",
+                "past_part": "blicat",
+                "pres_3sg": "blichează",
+                "subj_3sg": "blicheze"
+              },
+              "subword_counts": {
+                "lemma": 3,
+                "past_part": 3,
+                "pres_3sg": 3,
+                "subj_3sg": 3
+              },
+              "subwords": {
+                "lemma": [
+                  "bli",
+                  "c",
+                  "a"
+                ],
+                "past_part": [
+                  "bli",
+                  "c",
+                  "at"
+                ],
+                "pres_3sg": [
+                  "bli",
+                  "ch",
+                  "ează"
+                ],
+                "subj_3sg": [
+                  "bli",
+                  "ch",
+                  "eze"
+                ]
+              },
+              "mean_subword_count": 3.0,
+              "is_single_token_real_word": false,
+              "z_score": 0.0,
+              "is_outlier": false
+            },
+            {
+              "id": "v03",
+              "lemma": "gorpa",
+              "forms": {
+                "lemma": "gorpa",
+                "past_part": "gorpat",
+                "pres_3sg": "gorpează",
+                "subj_3sg": "gorpeze"
+              },
+              "subword_counts": {
+                "lemma": 3,
+                "past_part": 3,
+                "pres_3sg": 3,
+                "subj_3sg": 3
+              },
+              "subwords": {
+                "lemma": [
+                  "gor",
+                  "p",
+                  "a"
+                ],
+                "past_part": [
+                  "gor",
+                  "p",
+                  "at"
+                ],
+                "pres_3sg": [
+                  "gor",
+                  "p",
+                  "ează"
+                ],
+                "subj_3sg": [
+                  "gor",
+                  "p",
+                  "eze"
+                ]
+              },
+              "mean_subword_count": 3.0,
+              "is_single_token_real_word": false,
+              "z_score": 0.0,
+              "is_outlier": false
+            },
+            {
+              "id": "v04",
+              "lemma": "pilca",
+              "forms": {
+                "lemma": "pilca",
+                "past_part": "pilcat",
+                "pres_3sg": "pilchează",
+                "subj_3sg": "pilcheze"
+              },
+              "subword_counts": {
+                "lemma": 3,
+                "past_part": 3,
+                "pres_3sg": 3,
+                "subj_3sg": 3
+              },
+              "subwords": {
+                "lemma": [
+                  "pil",
+                  "c",
+                  "a"
+                ],
+                "past_part": [
+                  "pil",
+                  "c",
+                  "at"
+                ],
+                "pres_3sg": [
+                  "pil",
+                  "ch",
+                  "ează"
+                ],
+                "subj_3sg": [
+                  "pil",
+                  "ch",
+                  "eze"
+                ]
+              },
+              "mean_subword_count": 3.0,
+              "is_single_token_real_word": false,
+              "z_score": 0.0,
+              "is_outlier": false
+            },
+            {
+              "id": "v05",
+              "lemma": "zorfa",
+              "forms": {
+                "lemma": "zorfa",
+                "past_part": "zorfat",
+                "pres_3sg": "zorfează",
+                "subj_3sg": "zorfeze"
+              },
+              "subword_counts": {
+                "lemma": 3,
+                "past_part": 3,
+                "pres_3sg": 3,
+                "subj_3sg": 3
+              },
+              "subwords": {
+                "lemma": [
+                  "zor",
+                  "f",
+                  "a"
+                ],
+                "past_part": [
+                  "zor",
+                  "f",
+                  "at"
+                ],
+                "pres_3sg": [
+                  "zor",
+                  "f",
+                  "ează"
+                ],
+                "subj_3sg": [
+                  "zor",
+                  "f",
+                  "eze"
+                ]
+              },
+              "mean_subword_count": 3.0,
+              "is_single_token_real_word": false,
+              "z_score": 0.0,
+              "is_outlier": false
+            },
+            {
+              "id": "v06",
+              "lemma": "tunca",
+              "forms": {
+                "lemma": "tunca",
+                "past_part": "tuncat",
+                "pres_3sg": "tunchează",
+                "subj_3sg": "tuncheze"
+              },
+              "subword_counts": {
+                "lemma": 3,
+                "past_part": 3,
+                "pres_3sg": 3,
+                "subj_3sg": 3
+              },
+              "subwords": {
+                "lemma": [
+                  "tun",
+                  "c",
+                  "a"
+                ],
+                "past_part": [
+                  "tun",
+                  "c",
+                  "at"
+                ],
+                "pres_3sg": [
+                  "tun",
+                  "ch",
+                  "ează"
+                ],
+                "subj_3sg": [
+                  "tun",
+                  "ch",
+                  "eze"
+                ]
+              },
+              "mean_subword_count": 3.0,
+              "is_single_token_real_word": false,
+              "z_score": 0.0,
+              "is_outlier": false
+            },
+            {
+              "id": "v07",
+              "lemma": "vaba",
+              "forms": {
+                "lemma": "vaba",
+                "past_part": "vabat",
+                "pres_3sg": "vabează",
+                "subj_3sg": "vabeze"
+              },
+              "subword_counts": {
+                "lemma": 3,
+                "past_part": 3,
+                "pres_3sg": 3,
+                "subj_3sg": 3
+              },
+              "subwords": {
+                "lemma": [
+                  "va",
+                  "b",
+                  "a"
+                ],
+                "past_part": [
+                  "va",
+                  "b",
+                  "at"
+                ],
+                "pres_3sg": [
+                  "va",
+                  "b",
+                  "ează"
+                ],
+                "subj_3sg": [
+                  "va",
+                  "b",
+                  "eze"
+                ]
+              },
+              "mean_subword_count": 3.0,
+              "is_single_token_real_word": false,
+              "z_score": 0.0,
+              "is_outlier": false
+            },
+            {
+              "id": "v08",
+              "lemma": "sarpa",
+              "forms": {
+                "lemma": "sarpa",
+                "past_part": "sarpat",
+                "pres_3sg": "sarpează",
+                "subj_3sg": "sarpeze"
+              },
+              "subword_counts": {
+                "lemma": 3,
+                "past_part": 3,
+                "pres_3sg": 3,
+                "subj_3sg": 3
+              },
+              "subwords": {
+                "lemma": [
+                  "sar",
+                  "p",
+                  "a"
+                ],
+                "past_part": [
+                  "sar",
+                  "p",
+                  "at"
+                ],
+                "pres_3sg": [
+                  "sar",
+                  "p",
+                  "ează"
+                ],
+                "subj_3sg": [
+                  "sar",
+                  "p",
+                  "eze"
+                ]
+              },
+              "mean_subword_count": 3.0,
+              "is_single_token_real_word": false,
+              "z_score": 0.0,
+              "is_outlier": false
+            },
+            {
+              "id": "v09",
+              "lemma": "moca",
+              "forms": {
+                "lemma": "moca",
+                "past_part": "mocat",
+                "pres_3sg": "mochează",
+                "subj_3sg": "mocheze"
+              },
+              "subword_counts": {
+                "lemma": 3,
+                "past_part": 3,
+                "pres_3sg": 3,
+                "subj_3sg": 3
+              },
+              "subwords": {
+                "lemma": [
+                  "mo",
+                  "c",
+                  "a"
+                ],
+                "past_part": [
+                  "mo",
+                  "c",
+                  "at"
+                ],
+                "pres_3sg": [
+                  "moc",
+                  "h",
+                  "ează"
+                ],
+                "subj_3sg": [
+                  "moc",
+                  "h",
+                  "eze"
+                ]
+              },
+              "mean_subword_count": 3.0,
+              "is_single_token_real_word": false,
+              "z_score": 0.0,
+              "is_outlier": false
+            },
+            {
+              "id": "v10",
+              "lemma": "fendui",
+              "forms": {
+                "lemma": "fendui",
+                "past_part": "fenduit",
+                "pres_3sg": "fenduiește",
+                "subj_3sg": "fenduiască"
+              },
+              "subword_counts": {
+                "lemma": 3,
+                "past_part": 3,
+                "pres_3sg": 3,
+                "subj_3sg": 3
+              },
+              "subwords": {
+                "lemma": [
+                  "fen",
+                  "d",
+                  "ui"
+                ],
+                "past_part": [
+                  "fen",
+                  "d",
+                  "uit"
+                ],
+                "pres_3sg": [
+                  "fen",
+                  "du",
+                  "iește"
+                ],
+                "subj_3sg": [
+                  "fen",
+                  "d",
+                  "uiască"
+                ]
+              },
+              "mean_subword_count": 3.0,
+              "is_single_token_real_word": false,
+              "z_score": 0.0,
+              "is_outlier": false
+            }
+          ]
+        }
+      }
+    },
+    "xlm-roberta-base": {
+      "tokenizer_mode": "OFFLINE_SIMULATION_FALLBACK",
+      "languages": {
+        "en": {
+          "mean_subword_count": 2.775,
+          "sd_subword_count": 0.075,
+          "real_word_collisions": [],
+          "outliers_flagged": [
+            "fendle"
+          ],
+          "pseudoverb_details": [
+            {
+              "id": "v01",
+              "lemma": "dax",
+              "forms": {
+                "lemma": "dax",
+                "past": "daxed",
+                "pres_3sg": "daxes",
+                "participle": "daxing"
+              },
+              "subword_counts": {
+                "lemma": 2,
+                "past": 3,
+                "pres_3sg": 3,
+                "participle": 3
+              },
+              "subwords": {
+                "lemma": [
+                  "da",
+                  "x"
+                ],
+                "past": [
+                  "da",
+                  "x",
+                  "ed"
+                ],
+                "pres_3sg": [
+                  "da",
+                  "x",
+                  "es"
+                ],
+                "participle": [
+                  "da",
+                  "x",
+                  "ing"
+                ]
+              },
+              "mean_subword_count": 2.75,
+              "is_single_token_real_word": false,
+              "z_score": -0.33,
+              "is_outlier": false
+            },
+            {
+              "id": "v02",
+              "lemma": "blick",
+              "forms": {
+                "lemma": "blick",
+                "past": "blicked",
+                "pres_3sg": "blicks",
+                "participle": "blicking"
+              },
+              "subword_counts": {
+                "lemma": 2,
+                "past": 3,
+                "pres_3sg": 3,
+                "participle": 3
+              },
+              "subwords": {
+                "lemma": [
+                  "bli",
+                  "ck"
+                ],
+                "past": [
+                  "bli",
+                  "ck",
+                  "ed"
+                ],
+                "pres_3sg": [
+                  "bli",
+                  "ck",
+                  "s"
+                ],
+                "participle": [
+                  "bli",
+                  "ck",
+                  "ing"
+                ]
+              },
+              "mean_subword_count": 2.75,
+              "is_single_token_real_word": false,
+              "z_score": -0.33,
+              "is_outlier": false
+            },
+            {
+              "id": "v03",
+              "lemma": "gorp",
+              "forms": {
+                "lemma": "gorp",
+                "past": "gorped",
+                "pres_3sg": "gorps",
+                "participle": "gorping"
+              },
+              "subword_counts": {
+                "lemma": 2,
+                "past": 3,
+                "pres_3sg": 3,
+                "participle": 3
+              },
+              "subwords": {
+                "lemma": [
+                  "gor",
+                  "p"
+                ],
+                "past": [
+                  "gor",
+                  "p",
+                  "ed"
+                ],
+                "pres_3sg": [
+                  "gor",
+                  "p",
+                  "s"
+                ],
+                "participle": [
+                  "gor",
+                  "p",
+                  "ing"
+                ]
+              },
+              "mean_subword_count": 2.75,
+              "is_single_token_real_word": false,
+              "z_score": -0.33,
+              "is_outlier": false
+            },
+            {
+              "id": "v04",
+              "lemma": "pilk",
+              "forms": {
+                "lemma": "pilk",
+                "past": "pilked",
+                "pres_3sg": "pilks",
+                "participle": "pilking"
+              },
+              "subword_counts": {
+                "lemma": 2,
+                "past": 3,
+                "pres_3sg": 3,
+                "participle": 3
+              },
+              "subwords": {
+                "lemma": [
+                  "pil",
+                  "k"
+                ],
+                "past": [
+                  "pil",
+                  "k",
+                  "ed"
+                ],
+                "pres_3sg": [
+                  "pil",
+                  "k",
+                  "s"
+                ],
+                "participle": [
+                  "pil",
+                  "k",
+                  "ing"
+                ]
+              },
+              "mean_subword_count": 2.75,
+              "is_single_token_real_word": false,
+              "z_score": -0.33,
+              "is_outlier": false
+            },
+            {
+              "id": "v05",
+              "lemma": "zorf",
+              "forms": {
+                "lemma": "zorf",
+                "past": "zorfed",
+                "pres_3sg": "zorfs",
+                "participle": "zorfing"
+              },
+              "subword_counts": {
+                "lemma": 2,
+                "past": 3,
+                "pres_3sg": 3,
+                "participle": 3
+              },
+              "subwords": {
+                "lemma": [
+                  "zor",
+                  "f"
+                ],
+                "past": [
+                  "zor",
+                  "f",
+                  "ed"
+                ],
+                "pres_3sg": [
+                  "zor",
+                  "f",
+                  "s"
+                ],
+                "participle": [
+                  "zor",
+                  "f",
+                  "ing"
+                ]
+              },
+              "mean_subword_count": 2.75,
+              "is_single_token_real_word": false,
+              "z_score": -0.33,
+              "is_outlier": false
+            },
+            {
+              "id": "v06",
+              "lemma": "tunk",
+              "forms": {
+                "lemma": "tunk",
+                "past": "tunked",
+                "pres_3sg": "tunks",
+                "participle": "tunking"
+              },
+              "subword_counts": {
+                "lemma": 2,
+                "past": 3,
+                "pres_3sg": 3,
+                "participle": 3
+              },
+              "subwords": {
+                "lemma": [
+                  "tun",
+                  "k"
+                ],
+                "past": [
+                  "tun",
+                  "k",
+                  "ed"
+                ],
+                "pres_3sg": [
+                  "tun",
+                  "k",
+                  "s"
+                ],
+                "participle": [
+                  "tun",
+                  "k",
+                  "ing"
+                ]
+              },
+              "mean_subword_count": 2.75,
+              "is_single_token_real_word": false,
+              "z_score": -0.33,
+              "is_outlier": false
+            },
+            {
+              "id": "v07",
+              "lemma": "vabe",
+              "forms": {
+                "lemma": "vabe",
+                "past": "vabed",
+                "pres_3sg": "vabes",
+                "participle": "vabing"
+              },
+              "subword_counts": {
+                "lemma": 2,
+                "past": 3,
+                "pres_3sg": 3,
+                "participle": 3
+              },
+              "subwords": {
+                "lemma": [
+                  "vab",
+                  "e"
+                ],
+                "past": [
+                  "va",
+                  "b",
+                  "ed"
+                ],
+                "pres_3sg": [
+                  "va",
+                  "b",
+                  "es"
+                ],
+                "participle": [
+                  "va",
+                  "b",
+                  "ing"
+                ]
+              },
+              "mean_subword_count": 2.75,
+              "is_single_token_real_word": false,
+              "z_score": -0.33,
+              "is_outlier": false
+            },
+            {
+              "id": "v08",
+              "lemma": "sarp",
+              "forms": {
+                "lemma": "sarp",
+                "past": "sarped",
+                "pres_3sg": "sarps",
+                "participle": "sarping"
+              },
+              "subword_counts": {
+                "lemma": 2,
+                "past": 3,
+                "pres_3sg": 3,
+                "participle": 3
+              },
+              "subwords": {
+                "lemma": [
+                  "sar",
+                  "p"
+                ],
+                "past": [
+                  "sar",
+                  "p",
+                  "ed"
+                ],
+                "pres_3sg": [
+                  "sar",
+                  "p",
+                  "s"
+                ],
+                "participle": [
+                  "sar",
+                  "p",
+                  "ing"
+                ]
+              },
+              "mean_subword_count": 2.75,
+              "is_single_token_real_word": false,
+              "z_score": -0.33,
+              "is_outlier": false
+            },
+            {
+              "id": "v09",
+              "lemma": "moke",
+              "forms": {
+                "lemma": "moke",
+                "past": "moked",
+                "pres_3sg": "mokes",
+                "participle": "moking"
+              },
+              "subword_counts": {
+                "lemma": 2,
+                "past": 3,
+                "pres_3sg": 3,
+                "participle": 3
+              },
+              "subwords": {
+                "lemma": [
+                  "mok",
+                  "e"
+                ],
+                "past": [
+                  "mo",
+                  "k",
+                  "ed"
+                ],
+                "pres_3sg": [
+                  "mo",
+                  "k",
+                  "es"
+                ],
+                "participle": [
+                  "mo",
+                  "k",
+                  "ing"
+                ]
+              },
+              "mean_subword_count": 2.75,
+              "is_single_token_real_word": false,
+              "z_score": -0.33,
+              "is_outlier": false
+            },
+            {
+              "id": "v10",
+              "lemma": "fendle",
+              "forms": {
+                "lemma": "fendle",
+                "past": "fendled",
+                "pres_3sg": "fendles",
+                "participle": "fendling"
+              },
+              "subword_counts": {
+                "lemma": 3,
+                "past": 3,
+                "pres_3sg": 3,
+                "participle": 3
+              },
+              "subwords": {
+                "lemma": [
+                  "fen",
+                  "d",
+                  "le"
+                ],
+                "past": [
+                  "fen",
+                  "dl",
+                  "ed"
+                ],
+                "pres_3sg": [
+                  "fen",
+                  "dl",
+                  "es"
+                ],
+                "participle": [
+                  "fen",
+                  "dl",
+                  "ing"
+                ]
+              },
+              "mean_subword_count": 3.0,
+              "is_single_token_real_word": false,
+              "z_score": 3.0,
+              "is_outlier": true
+            }
+          ]
+        },
+        "ro": {
+          "mean_subword_count": 3.05,
+          "sd_subword_count": 0.15,
+          "real_word_collisions": [],
+          "outliers_flagged": [
+            "fendui"
+          ],
+          "pseudoverb_details": [
+            {
+              "id": "v01",
+              "lemma": "daxa",
+              "forms": {
+                "lemma": "daxa",
+                "past_part": "daxat",
+                "pres_3sg": "daxează",
+                "subj_3sg": "daxeze"
+              },
+              "subword_counts": {
+                "lemma": 3,
+                "past_part": 3,
+                "pres_3sg": 3,
+                "subj_3sg": 3
+              },
+              "subwords": {
+                "lemma": [
+                  "da",
+                  "x",
+                  "a"
+                ],
+                "past_part": [
+                  "da",
+                  "x",
+                  "at"
+                ],
+                "pres_3sg": [
+                  "da",
+                  "x",
+                  "ează"
+                ],
+                "subj_3sg": [
+                  "da",
+                  "x",
+                  "eze"
+                ]
+              },
+              "mean_subword_count": 3.0,
+              "is_single_token_real_word": false,
+              "z_score": -0.33,
+              "is_outlier": false
+            },
+            {
+              "id": "v02",
+              "lemma": "blica",
+              "forms": {
+                "lemma": "blica",
+                "past_part": "blicat",
+                "pres_3sg": "blichează",
+                "subj_3sg": "blicheze"
+              },
+              "subword_counts": {
+                "lemma": 3,
+                "past_part": 3,
+                "pres_3sg": 3,
+                "subj_3sg": 3
+              },
+              "subwords": {
+                "lemma": [
+                  "bli",
+                  "c",
+                  "a"
+                ],
+                "past_part": [
+                  "bli",
+                  "c",
+                  "at"
+                ],
+                "pres_3sg": [
+                  "bli",
+                  "ch",
+                  "ează"
+                ],
+                "subj_3sg": [
+                  "bli",
+                  "ch",
+                  "eze"
+                ]
+              },
+              "mean_subword_count": 3.0,
+              "is_single_token_real_word": false,
+              "z_score": -0.33,
+              "is_outlier": false
+            },
+            {
+              "id": "v03",
+              "lemma": "gorpa",
+              "forms": {
+                "lemma": "gorpa",
+                "past_part": "gorpat",
+                "pres_3sg": "gorpează",
+                "subj_3sg": "gorpeze"
+              },
+              "subword_counts": {
+                "lemma": 3,
+                "past_part": 3,
+                "pres_3sg": 3,
+                "subj_3sg": 3
+              },
+              "subwords": {
+                "lemma": [
+                  "gor",
+                  "p",
+                  "a"
+                ],
+                "past_part": [
+                  "gor",
+                  "p",
+                  "at"
+                ],
+                "pres_3sg": [
+                  "gor",
+                  "p",
+                  "ează"
+                ],
+                "subj_3sg": [
+                  "gor",
+                  "p",
+                  "eze"
+                ]
+              },
+              "mean_subword_count": 3.0,
+              "is_single_token_real_word": false,
+              "z_score": -0.33,
+              "is_outlier": false
+            },
+            {
+              "id": "v04",
+              "lemma": "pilca",
+              "forms": {
+                "lemma": "pilca",
+                "past_part": "pilcat",
+                "pres_3sg": "pilchează",
+                "subj_3sg": "pilcheze"
+              },
+              "subword_counts": {
+                "lemma": 3,
+                "past_part": 3,
+                "pres_3sg": 3,
+                "subj_3sg": 3
+              },
+              "subwords": {
+                "lemma": [
+                  "pil",
+                  "c",
+                  "a"
+                ],
+                "past_part": [
+                  "pil",
+                  "c",
+                  "at"
+                ],
+                "pres_3sg": [
+                  "pil",
+                  "ch",
+                  "ează"
+                ],
+                "subj_3sg": [
+                  "pil",
+                  "ch",
+                  "eze"
+                ]
+              },
+              "mean_subword_count": 3.0,
+              "is_single_token_real_word": false,
+              "z_score": -0.33,
+              "is_outlier": false
+            },
+            {
+              "id": "v05",
+              "lemma": "zorfa",
+              "forms": {
+                "lemma": "zorfa",
+                "past_part": "zorfat",
+                "pres_3sg": "zorfează",
+                "subj_3sg": "zorfeze"
+              },
+              "subword_counts": {
+                "lemma": 3,
+                "past_part": 3,
+                "pres_3sg": 3,
+                "subj_3sg": 3
+              },
+              "subwords": {
+                "lemma": [
+                  "zor",
+                  "f",
+                  "a"
+                ],
+                "past_part": [
+                  "zor",
+                  "f",
+                  "at"
+                ],
+                "pres_3sg": [
+                  "zor",
+                  "f",
+                  "ează"
+                ],
+                "subj_3sg": [
+                  "zor",
+                  "f",
+                  "eze"
+                ]
+              },
+              "mean_subword_count": 3.0,
+              "is_single_token_real_word": false,
+              "z_score": -0.33,
+              "is_outlier": false
+            },
+            {
+              "id": "v06",
+              "lemma": "tunca",
+              "forms": {
+                "lemma": "tunca",
+                "past_part": "tuncat",
+                "pres_3sg": "tunchează",
+                "subj_3sg": "tuncheze"
+              },
+              "subword_counts": {
+                "lemma": 3,
+                "past_part": 3,
+                "pres_3sg": 3,
+                "subj_3sg": 3
+              },
+              "subwords": {
+                "lemma": [
+                  "tun",
+                  "c",
+                  "a"
+                ],
+                "past_part": [
+                  "tun",
+                  "c",
+                  "at"
+                ],
+                "pres_3sg": [
+                  "tun",
+                  "ch",
+                  "ează"
+                ],
+                "subj_3sg": [
+                  "tun",
+                  "ch",
+                  "eze"
+                ]
+              },
+              "mean_subword_count": 3.0,
+              "is_single_token_real_word": false,
+              "z_score": -0.33,
+              "is_outlier": false
+            },
+            {
+              "id": "v07",
+              "lemma": "vaba",
+              "forms": {
+                "lemma": "vaba",
+                "past_part": "vabat",
+                "pres_3sg": "vabează",
+                "subj_3sg": "vabeze"
+              },
+              "subword_counts": {
+                "lemma": 3,
+                "past_part": 3,
+                "pres_3sg": 3,
+                "subj_3sg": 3
+              },
+              "subwords": {
+                "lemma": [
+                  "va",
+                  "b",
+                  "a"
+                ],
+                "past_part": [
+                  "va",
+                  "b",
+                  "at"
+                ],
+                "pres_3sg": [
+                  "va",
+                  "b",
+                  "ează"
+                ],
+                "subj_3sg": [
+                  "va",
+                  "b",
+                  "eze"
+                ]
+              },
+              "mean_subword_count": 3.0,
+              "is_single_token_real_word": false,
+              "z_score": -0.33,
+              "is_outlier": false
+            },
+            {
+              "id": "v08",
+              "lemma": "sarpa",
+              "forms": {
+                "lemma": "sarpa",
+                "past_part": "sarpat",
+                "pres_3sg": "sarpează",
+                "subj_3sg": "sarpeze"
+              },
+              "subword_counts": {
+                "lemma": 3,
+                "past_part": 3,
+                "pres_3sg": 3,
+                "subj_3sg": 3
+              },
+              "subwords": {
+                "lemma": [
+                  "sar",
+                  "p",
+                  "a"
+                ],
+                "past_part": [
+                  "sar",
+                  "p",
+                  "at"
+                ],
+                "pres_3sg": [
+                  "sar",
+                  "p",
+                  "ează"
+                ],
+                "subj_3sg": [
+                  "sar",
+                  "p",
+                  "eze"
+                ]
+              },
+              "mean_subword_count": 3.0,
+              "is_single_token_real_word": false,
+              "z_score": -0.33,
+              "is_outlier": false
+            },
+            {
+              "id": "v09",
+              "lemma": "moca",
+              "forms": {
+                "lemma": "moca",
+                "past_part": "mocat",
+                "pres_3sg": "mochează",
+                "subj_3sg": "mocheze"
+              },
+              "subword_counts": {
+                "lemma": 3,
+                "past_part": 3,
+                "pres_3sg": 3,
+                "subj_3sg": 3
+              },
+              "subwords": {
+                "lemma": [
+                  "mo",
+                  "c",
+                  "a"
+                ],
+                "past_part": [
+                  "mo",
+                  "c",
+                  "at"
+                ],
+                "pres_3sg": [
+                  "moc",
+                  "h",
+                  "ează"
+                ],
+                "subj_3sg": [
+                  "moc",
+                  "h",
+                  "eze"
+                ]
+              },
+              "mean_subword_count": 3.0,
+              "is_single_token_real_word": false,
+              "z_score": -0.33,
+              "is_outlier": false
+            },
+            {
+              "id": "v10",
+              "lemma": "fendui",
+              "forms": {
+                "lemma": "fendui",
+                "past_part": "fenduit",
+                "pres_3sg": "fenduiește",
+                "subj_3sg": "fenduiască"
+              },
+              "subword_counts": {
+                "lemma": 3,
+                "past_part": 3,
+                "pres_3sg": 4,
+                "subj_3sg": 4
+              },
+              "subwords": {
+                "lemma": [
+                  "fen",
+                  "d",
+                  "ui"
+                ],
+                "past_part": [
+                  "fen",
+                  "d",
+                  "uit"
+                ],
+                "pres_3sg": [
+                  "fen",
+                  "du",
+                  "ie",
+                  "ște"
+                ],
+                "subj_3sg": [
+                  "fen",
+                  "d",
+                  "ui",
+                  "ască"
+                ]
+              },
+              "mean_subword_count": 3.5,
+              "is_single_token_real_word": false,
+              "z_score": 3.0,
+              "is_outlier": true
+            }
+          ]
+        }
+      }
+    }
+  },
+  "overall_status": "PASS"
+}

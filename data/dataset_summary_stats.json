@@ -1,0 +1,71 @@
+{
+  "benchmark_name": "Cross-Lingual Syntactic Bootstrapping Benchmark (EN vs. RO)",
+  "random_seed": 42,
+  "benchmark_main": {
+    "total_rows": 10080,
+    "by_language": {
+      "en": 5040,
+      "ro": 5040
+    },
+    "by_verb_class": {
+      "mental_epistemic": 3360,
+      "physical_ditransitive": 3360,
+      "physical_transitive_causative": 3360
+    },
+    "by_condition": {
+      "syntax_rich_informative": 1440,
+      "syntax_rich_ambiguous": 1440,
+      "cue_conflict": 1440,
+      "constituent_scrambled": 1440,
+      "word_scrambled": 1440,
+      "bow_inflected": 1440,
+      "bow_lemmatized": 1440
+    },
+    "by_eval_type": {
+      "semantic_forced_choice": 5040,
+      "held_out_frame": 5040
+    },
+    "by_num_shots": {
+      "4": 6720,
+      "1": 3360
+    },
+    "by_language_and_shots": {
+      "en_s4": 3360,
+      "en_s1": 1680,
+      "ro_s4": 3360,
+      "ro_s1": 1680
+    }
+  },
+  "sanity_check": {
+    "total_rows": 1344,
+    "by_language": {
+      "en": 672,
+      "ro": 672
+    },
+    "by_verb_class": {
+      "mental_epistemic": 448,
+      "physical_ditransitive": 448,
+      "physical_transitive_causative": 448
+    },
+    "by_condition": {
+      "syntax_rich_informative": 192,
+      "syntax_rich_ambiguous": 192,
+      "cue_conflict": 192,
+      "constituent_scrambled": 192,
+      "word_scrambled": 192,
+      "bow_inflected": 192,
+      "bow_lemmatized": 192
+    },
+    "by_eval_type": {
+      "semantic_forced_choice": 672,
+      "held_out_frame": 672
+    },
+    "by_num_shots": {
+      "4": 1344
+    },
+    "by_language_and_shots": {
+      "en_s4": 672,
+      "ro_s4": 672
+    }
+  }
+}
