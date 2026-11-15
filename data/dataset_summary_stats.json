@@ -2,70 +2,78 @@
   "benchmark_name": "Cross-Lingual Syntactic Bootstrapping Benchmark (EN vs. RO)",
   "random_seed": 42,
   "benchmark_main": {
-    "total_rows": 10080,
+    "total_rows": 15840,
     "by_language": {
-      "en": 5040,
-      "ro": 5040
+      "en": 7920,
+      "ro": 7920
     },
     "by_verb_class": {
-      "mental_epistemic": 3360,
-      "physical_ditransitive": 3360,
-      "physical_transitive_causative": 3360
+      "mental_epistemic": 5280,
+      "physical_ditransitive": 5280,
+      "physical_transitive_causative": 5280
     },
     "by_condition": {
       "syntax_rich_informative": 1440,
       "syntax_rich_ambiguous": 1440,
       "cue_conflict": 1440,
       "constituent_scrambled": 1440,
+      "constituent_scrambled_ambiguous": 1440,
       "word_scrambled": 1440,
+      "word_scrambled_ambiguous": 1440,
       "bow_inflected": 1440,
-      "bow_lemmatized": 1440
+      "bow_inflected_ambiguous": 1440,
+      "bow_lemmatized": 1440,
+      "bow_lemmatized_ambiguous": 1440
     },
     "by_eval_type": {
-      "semantic_forced_choice": 5040,
-      "held_out_frame": 5040
+      "semantic_forced_choice": 7920,
+      "held_out_frame": 7920
     },
     "by_num_shots": {
-      "4": 6720,
-      "1": 3360
+      "4": 10560,
+      "1": 5280
     },
     "by_language_and_shots": {
-      "en_s4": 3360,
-      "en_s1": 1680,
-      "ro_s4": 3360,
-      "ro_s1": 1680
+      "en_s4": 5280,
+      "en_s1": 2640,
+      "ro_s4": 5280,
+      "ro_s1": 2640
     }
   },
   "sanity_check": {
-    "total_rows": 1344,
+    "total_rows": 2112,
     "by_language": {
-      "en": 672,
-      "ro": 672
+      "en": 1056,
+      "ro": 1056
     },
     "by_verb_class": {
-      "mental_epistemic": 448,
-      "physical_ditransitive": 448,
-      "physical_transitive_causative": 448
+      "mental_epistemic": 704,
+      "physical_ditransitive": 704,
+      "physical_transitive_causative": 704
     },
     "by_condition": {
       "syntax_rich_informative": 192,
       "syntax_rich_ambiguous": 192,
       "cue_conflict": 192,
       "constituent_scrambled": 192,
+      "constituent_scrambled_ambiguous": 192,
       "word_scrambled": 192,
+      "word_scrambled_ambiguous": 192,
       "bow_inflected": 192,
-      "bow_lemmatized": 192
+      "bow_inflected_ambiguous": 192,
+      "bow_lemmatized": 192,
+      "bow_lemmatized_ambiguous": 192
     },
     "by_eval_type": {
-      "semantic_forced_choice": 672,
-      "held_out_frame": 672
+      "semantic_forced_choice": 1056,
+      "held_out_frame": 1056
     },
     "by_num_shots": {
-      "4": 1344
+      "4": 2112
     },
     "by_language_and_shots": {
-      "en_s4": 672,
-      "ro_s4": 672
+      "en_s4": 1056,
+      "ro_s4": 1056
     }
   }
 }

@@ -1,7 +1,7 @@
 {
   "metadata": {
     "benchmark": "Cross-Lingual Syntactic Bootstrapping (EN vs. RO)",
-    "version": "1.0.0",
+    "version": "2.0.0",
     "items_per_class_per_language": 8,
     "shots_per_item": 4,
     "conditions": [
@@ -9,9 +9,13 @@
       "syntax_rich_ambiguous",
       "cue_conflict",
       "constituent_scrambled",
+      "constituent_scrambled_ambiguous",
       "word_scrambled",
+      "word_scrambled_ambiguous",
       "bow_inflected",
-      "bow_lemmatized"
+      "bow_inflected_ambiguous",
+      "bow_lemmatized",
+      "bow_lemmatized_ambiguous"
     ],
     "eval_types": [
       "semantic_forced_choice",
@@ -154,12 +158,12 @@
           ],
           "evaluations": {
             "semantic_forced_choice": {
-              "target_valid": "In other words, someone held a belief about a situation.",
-              "target_invalid": "In other words, someone handed a heavy object to a recipient."
+              "target_valid": "In this context, to {verb_lemma} means to hold a firm view that something is true.",
+              "target_invalid": "In this context, to {verb_lemma} means to pass or dispatch a concrete item to someone else."
             },
             "held_out_frame": {
-              "target_valid": "Whether or not it was true, someone {verb_past} that it mattered.",
-              "target_invalid": "Later that afternoon, someone {verb_past} the assistant a heavy box."
+              "target_valid": "Yesterday, the traveler {verb_past} that the shop closed early.",
+              "target_invalid": "Yesterday, the traveler {verb_past} a spare coin to the cousin."
             }
           }
         },
@@ -296,12 +300,12 @@
           ],
           "evaluations": {
             "semantic_forced_choice": {
-              "target_valid": "Essentially, a person formed a mental conclusion regarding an event.",
-              "target_invalid": "Essentially, a person struck another individual with sudden physical force."
+              "target_valid": "In other words, to {verb_lemma} means to accept an idea or proposition as a fact.",
+              "target_invalid": "In other words, to {verb_lemma} means to deliver a physical item over to another person."
             },
             "held_out_frame": {
-              "target_valid": "After reviewing the facts, someone {verb_past} that the story was accurate.",
-              "target_invalid": "During the sudden clash, someone {verb_past} the rival across the floor."
+              "target_valid": "Every morning, the commuter {verb_pres_3sg} that the road stays busy.",
+              "target_invalid": "Every morning, the commuter {verb_pres_3sg} a warm coat to the nephew."
             }
           }
         },
@@ -438,12 +442,12 @@
           ],
           "evaluations": {
             "semantic_forced_choice": {
-              "target_valid": "This means that an observer maintained an opinion about what happened.",
-              "target_invalid": "This means that an observer delivered a sealed parcel to a colleague."
+              "target_valid": "Put simply, the verb {verb_lemma} describes forming a mental judgment about an uncertain claim.",
+              "target_invalid": "Put simply, the verb {verb_lemma} describes transferring possession of an item to a recipient."
             },
             "held_out_frame": {
-              "target_valid": "Even without direct proof, someone {verb_past} that the claim was valid.",
-              "target_invalid": "Before leaving the office, someone {verb_past} the secretary a sealed folder."
+              "target_valid": "Soon, the volunteer will {verb_lemma} that the hall is ready.",
+              "target_invalid": "Soon, the volunteer will {verb_lemma} a small map to the visitor."
             }
           }
         },
@@ -580,12 +584,12 @@
           ],
           "evaluations": {
             "semantic_forced_choice": {
-              "target_valid": "To put it simply, someone assumed that a particular fact was true.",
-              "target_invalid": "To put it simply, someone shoved a bystander away from the entrance."
+              "target_valid": "Specifically, the action to {verb_lemma} refers to maintaining an epistemic attitude toward a statement.",
+              "target_invalid": "Specifically, the action to {verb_lemma} refers to conveying a tangible thing to another individual."
             },
             "held_out_frame": {
-              "target_valid": "From the very beginning, someone {verb_past} that the outcome would change.",
-              "target_invalid": "Near the narrow doorway, someone {verb_past} the guard with both hands."
+              "target_valid": "At noon, the painter might {verb_lemma} that the room felt quiet.",
+              "target_invalid": "At noon, the painter might {verb_lemma} a fresh pen to the classmate."
             }
           }
         },
@@ -722,12 +726,12 @@
           ],
           "evaluations": {
             "semantic_forced_choice": {
-              "target_valid": "In summary, an individual entertained a thought about someone's behavior.",
-              "target_invalid": "In summary, an individual transferred ownership of an item to a neighbor."
+              "target_valid": "Based on these examples, to {verb_lemma} means to suppose privately that a certain event occurred.",
+              "target_invalid": "Based on these examples, to {verb_lemma} means to apply sudden physical force directly against someone."
             },
             "held_out_frame": {
-              "target_valid": "Despite earlier doubts, someone {verb_past} that the explanation made sense.",
-              "target_invalid": "At the front counter, someone {verb_past} the customer a printed receipt."
+              "target_valid": "Later, the musician {verb_past} that the train had stopped.",
+              "target_invalid": "Later, the musician {verb_past} the bystander hard on the shoulder."
             }
           }
         },
@@ -864,12 +868,12 @@
           ],
           "evaluations": {
             "semantic_forced_choice": {
-              "target_valid": "Overall, someone judged that a specific state of affairs had occurred.",
-              "target_invalid": "Overall, someone forcefully knocked an opponent onto the ground."
+              "target_valid": "In these sentences, to {verb_lemma} means to treat a doubtful assertion as likely true.",
+              "target_invalid": "In these sentences, to {verb_lemma} means to exert bodily impact against a physical target."
             },
             "held_out_frame": {
-              "target_valid": "Upon hearing the news, someone {verb_past} that the delay was unavoidable.",
-              "target_invalid": "Inside the crowded hall, someone {verb_past} the stranger against the wall."
+              "target_valid": "Often, the gardener {verb_pres_3sg} that the porch looks crowded.",
+              "target_invalid": "Often, the gardener {verb_pres_3sg} the pedestrian firmly on the back."
             }
           }
         },
@@ -1006,12 +1010,12 @@
           ],
           "evaluations": {
             "semantic_forced_choice": {
-              "target_valid": "What happened was that someone held an epistemic attitude toward a claim.",
-              "target_invalid": "What happened was that someone passed a concrete package to a courier."
+              "target_valid": "More clearly, the verb {verb_lemma} expresses an internal cognitive stance toward a proposition.",
+              "target_invalid": "More clearly, the verb {verb_lemma} expresses a forceful physical contact directed at someone."
             },
             "held_out_frame": {
-              "target_valid": "Privately, someone {verb_past} that the decision had already been made.",
-              "target_invalid": "Quickly, someone {verb_past} the tenant a spare key to the building."
+              "target_valid": "Tomorrow, the tailor will {verb_lemma} that the ferry runs on time.",
+              "target_invalid": "Tomorrow, the tailor will {verb_lemma} the cyclist suddenly with an elbow."
             }
           }
         },
@@ -1148,12 +1152,12 @@
           ],
           "evaluations": {
             "semantic_forced_choice": {
-              "target_valid": "Thus, a participant reasoned mentally that an event had taken place.",
-              "target_invalid": "Thus, a participant physically struck a challenger during a confrontation."
+              "target_valid": "Accordingly, to {verb_lemma} is best understood as holding a reasoned conviction about an outcome.",
+              "target_invalid": "Accordingly, to {verb_lemma} is best understood as directing abrupt mechanical force onto another body."
             },
             "held_out_frame": {
-              "target_valid": "After careful reflection, someone {verb_past} that the plan would succeed.",
-              "target_invalid": "Without any warning, someone {verb_past} the opponent during the match."
+              "target_valid": "Perhaps, the brother might {verb_lemma} that the lights went out.",
+              "target_invalid": "Perhaps, the brother might {verb_lemma} the passenger sharply on the arm."
             }
           }
         }
@@ -1292,12 +1296,12 @@
           ],
           "evaluations": {
             "semantic_forced_choice": {
-              "target_valid": "In other words, someone physically transferred a concrete object to a recipient.",
-              "target_invalid": "In other words, someone silently held a mental belief about a proposition."
+              "target_valid": "In this context, to {verb_lemma} means to pass or dispatch a concrete item to someone else.",
+              "target_invalid": "In this context, to {verb_lemma} means to hold a firm view that something is true."
             },
             "held_out_frame": {
-              "target_valid": "Later, someone {verb_past} a package to the assistant.",
-              "target_invalid": "Later, someone {verb_past} that the situation was complicated."
+              "target_valid": "Yesterday, the traveler {verb_past} a spare coin to the cousin.",
+              "target_invalid": "Yesterday, the traveler {verb_past} that the shop closed early."
             }
           }
         },
@@ -1434,12 +1438,12 @@
           ],
           "evaluations": {
             "semantic_forced_choice": {
-              "target_valid": "Essentially, a person handed an item over so another person would receive it.",
-              "target_invalid": "Essentially, a person struck an opponent with sudden physical force."
+              "target_valid": "In other words, to {verb_lemma} means to deliver a physical item over to another person.",
+              "target_invalid": "In other words, to {verb_lemma} means to accept an idea or proposition as a fact."
             },
             "held_out_frame": {
-              "target_valid": "Afterward, someone {verb_past} a document to the colleague.",
-              "target_invalid": "Afterward, someone {verb_past} that the witness had already left."
+              "target_valid": "Every morning, the commuter {verb_pres_3sg} a warm coat to the nephew.",
+              "target_invalid": "Every morning, the commuter {verb_pres_3sg} that the road stays busy."
             }
           }
         },
@@ -1576,12 +1580,12 @@
           ],
           "evaluations": {
             "semantic_forced_choice": {
-              "target_valid": "This means that an agent delivered a tangible thing into someone's possession.",
-              "target_invalid": "This means that an agent pondered whether a theoretical claim was valid."
+              "target_valid": "Put simply, the verb {verb_lemma} describes transferring possession of an item to a recipient.",
+              "target_invalid": "Put simply, the verb {verb_lemma} describes forming a mental judgment about an uncertain claim."
             },
             "held_out_frame": {
-              "target_valid": "Before noon, someone {verb_past} a parcel to the neighbor.",
-              "target_invalid": "Before noon, someone {verb_past} that the theory was incorrect."
+              "target_valid": "Soon, the volunteer will {verb_lemma} a small map to the visitor.",
+              "target_invalid": "Soon, the volunteer will {verb_lemma} that the hall is ready."
             }
           }
         },
@@ -1718,12 +1722,12 @@
           ],
           "evaluations": {
             "semantic_forced_choice": {
-              "target_valid": "To put it simply, someone passed an object directly to a beneficiary.",
-              "target_invalid": "To put it simply, someone shoved a rival backward during a scuffle."
+              "target_valid": "Specifically, the action to {verb_lemma} refers to conveying a tangible thing to another individual.",
+              "target_invalid": "Specifically, the action to {verb_lemma} refers to maintaining an epistemic attitude toward a statement."
             },
             "held_out_frame": {
-              "target_valid": "At the entrance, someone {verb_past} a folder to the secretary.",
-              "target_invalid": "At the entrance, someone {verb_past} that the meeting had ended."
+              "target_valid": "At noon, the painter might {verb_lemma} a fresh pen to the classmate.",
+              "target_invalid": "At noon, the painter might {verb_lemma} that the room felt quiet."
             }
           }
         },
@@ -1860,12 +1864,12 @@
           ],
           "evaluations": {
             "semantic_forced_choice": {
-              "target_valid": "In summary, a sender provided a concrete article to a receiver.",
-              "target_invalid": "In summary, a thinker concluded mentally that a hypothesis was sound."
+              "target_valid": "In this passage, to {verb_lemma} means to move a possession from oneself to a recipient.",
+              "target_invalid": "In this passage, to {verb_lemma} means to deliver a sharp physical force onto someone."
             },
             "held_out_frame": {
-              "target_valid": "During the visit, someone {verb_past} a box to the guest.",
-              "target_invalid": "During the visit, someone {verb_past} that the weather would improve."
+              "target_valid": "Earlier, the brother {verb_past} the cousin a folded map.",
+              "target_invalid": "Earlier, the brother {verb_past} the cousin hard on the shoulder."
             }
           }
         },
@@ -2002,12 +2006,12 @@
           ],
           "evaluations": {
             "semantic_forced_choice": {
-              "target_valid": "Overall, someone gave a physical item to another person in the room.",
-              "target_invalid": "Overall, someone forcefully hit an adversary during an altercation."
+              "target_valid": "Stated plainly, the verb {verb_lemma} indicates providing a concrete thing to another party.",
+              "target_invalid": "Stated plainly, the verb {verb_lemma} indicates causing immediate physical impact against a person."
             },
             "held_out_frame": {
-              "target_valid": "Right on time, someone {verb_past} an envelope to the client.",
-              "target_invalid": "Right on time, someone {verb_past} that the answer was obvious."
+              "target_valid": "Sometimes, the uncle {verb_pres_3sg} the nephew a new notebook.",
+              "target_invalid": "Sometimes, the uncle {verb_pres_3sg} the nephew firmly on the back."
             }
           }
         },
@@ -2144,12 +2148,12 @@
           ],
           "evaluations": {
             "semantic_forced_choice": {
-              "target_valid": "What happened was that someone supplied a material object to a recipient.",
-              "target_invalid": "What happened was that someone doubted the truth of an earlier statement."
+              "target_valid": "That is to say, to {verb_lemma} denotes routing a tangible object to an intended receiver.",
+              "target_invalid": "That is to say, to {verb_lemma} denotes jarring another individual through sudden bodily contact."
             },
             "held_out_frame": {
-              "target_valid": "Moments later, someone {verb_past} a ticket to the passenger.",
-              "target_invalid": "Moments later, someone {verb_past} that the train had departed."
+              "target_valid": "Next week, the friend will {verb_lemma} the companion a spare watch.",
+              "target_invalid": "Next week, the friend will {verb_lemma} the companion sharply on the arm."
             }
           }
         },
@@ -2286,12 +2290,12 @@
           ],
           "evaluations": {
             "semantic_forced_choice": {
-              "target_valid": "Thus, one participant handed a possession over to a second participant.",
-              "target_invalid": "Thus, one participant physically pushed a second participant to the floor."
+              "target_valid": "Clearly, the word {verb_lemma} refers to placing an item into another person's possession.",
+              "target_invalid": "Clearly, the word {verb_lemma} refers to applying abrupt bodily force against another person."
             },
             "held_out_frame": {
-              "target_valid": "Before departing, someone {verb_past} a manual to the student.",
-              "target_invalid": "Before departing, someone {verb_past} that the exam was difficult."
+              "target_valid": "Otherwise, the artist might {verb_lemma} the pedestrian a red umbrella.",
+              "target_invalid": "Otherwise, the artist might {verb_lemma} the pedestrian suddenly with an elbow."
             }
           }
         }
@@ -2422,12 +2426,12 @@
           ],
           "evaluations": {
             "semantic_forced_choice": {
-              "target_valid": "In other words, someone performed a direct physical impact on another person.",
-              "target_invalid": "In other words, someone held an abstract belief about a future event."
+              "target_valid": "Based on these examples, to {verb_lemma} means to apply sudden physical force directly against someone.",
+              "target_invalid": "Based on these examples, to {verb_lemma} means to suppose privately that a certain event occurred."
             },
             "held_out_frame": {
-              "target_valid": "During the confrontation, someone {verb_past} the opponent with great force.",
-              "target_invalid": "During the confrontation, someone {verb_past} that the argument was valid."
+              "target_valid": "Later, the musician {verb_past} the bystander hard on the shoulder.",
+              "target_invalid": "Later, the musician {verb_past} that the train had stopped."
             }
           }
         },
@@ -2556,12 +2560,12 @@
           ],
           "evaluations": {
             "semantic_forced_choice": {
-              "target_valid": "Essentially, an agent forcefully pushed or struck a target individual.",
-              "target_invalid": "Essentially, an agent handed a wrapped parcel to a waiting recipient."
+              "target_valid": "In these sentences, to {verb_lemma} means to exert bodily impact against a physical target.",
+              "target_invalid": "In these sentences, to {verb_lemma} means to treat a doubtful assertion as likely true."
             },
             "held_out_frame": {
-              "target_valid": "Moments later, someone {verb_past} the rival forcefully near the exit.",
-              "target_invalid": "Moments later, someone {verb_past} the assistant a wrapped parcel."
+              "target_valid": "Often, the gardener {verb_pres_3sg} the pedestrian firmly on the back.",
+              "target_invalid": "Often, the gardener {verb_pres_3sg} that the porch looks crowded."
             }
           }
         },
@@ -2690,12 +2694,12 @@
           ],
           "evaluations": {
             "semantic_forced_choice": {
-              "target_valid": "This means that one person acted physically upon another person's body.",
-              "target_invalid": "This means that one person assumed mentally that a report was accurate."
+              "target_valid": "More clearly, the verb {verb_lemma} expresses a forceful physical contact directed at someone.",
+              "target_invalid": "More clearly, the verb {verb_lemma} expresses an internal cognitive stance toward a proposition."
             },
             "held_out_frame": {
-              "target_valid": "In the sudden commotion, someone {verb_past} the guard backward.",
-              "target_invalid": "In the sudden commotion, someone {verb_past} that the report was accurate."
+              "target_valid": "Tomorrow, the tailor will {verb_lemma} the cyclist suddenly with an elbow.",
+              "target_invalid": "Tomorrow, the tailor will {verb_lemma} that the ferry runs on time."
             }
           }
         },
@@ -2824,12 +2828,12 @@
           ],
           "evaluations": {
             "semantic_forced_choice": {
-              "target_valid": "To put it simply, someone applied direct physical force against a person.",
-              "target_invalid": "To put it simply, someone delivered a printed document to a secretary."
+              "target_valid": "Accordingly, to {verb_lemma} is best understood as directing abrupt mechanical force onto another body.",
+              "target_invalid": "Accordingly, to {verb_lemma} is best understood as holding a reasoned conviction about an outcome."
             },
             "held_out_frame": {
-              "target_valid": "Near the doorway, someone {verb_past} the intruder with both hands.",
-              "target_invalid": "Near the doorway, someone {verb_past} the secretary a printed document."
+              "target_valid": "Perhaps, the brother might {verb_lemma} the passenger sharply on the arm.",
+              "target_invalid": "Perhaps, the brother might {verb_lemma} that the lights went out."
             }
           }
         },
@@ -2958,12 +2962,12 @@
           ],
           "evaluations": {
             "semantic_forced_choice": {
-              "target_valid": "In summary, an initiator physically impacted a patient during an encounter.",
-              "target_invalid": "In summary, an initiator privately believed that an explanation made sense."
+              "target_valid": "In this passage, to {verb_lemma} means to deliver a sharp physical force onto someone.",
+              "target_invalid": "In this passage, to {verb_lemma} means to move a possession from oneself to a recipient."
             },
             "held_out_frame": {
-              "target_valid": "Right after the bell, someone {verb_past} the challenger across the ring.",
-              "target_invalid": "Right after the bell, someone {verb_past} that the explanation made sense."
+              "target_valid": "Earlier, the brother {verb_past} the cousin hard on the shoulder.",
+              "target_invalid": "Earlier, the brother {verb_past} the cousin a folded map."
             }
           }
         },
@@ -3092,12 +3096,12 @@
           ],
           "evaluations": {
             "semantic_forced_choice": {
-              "target_valid": "Overall, someone forcefully collided with or struck another individual.",
-              "target_invalid": "Overall, someone gave a spare key to a new tenant in the hallway."
+              "target_valid": "Stated plainly, the verb {verb_lemma} indicates causing immediate physical impact against a person.",
+              "target_invalid": "Stated plainly, the verb {verb_lemma} indicates providing a concrete thing to another party."
             },
             "held_out_frame": {
-              "target_valid": "Without hesitation, someone {verb_past} the fugitive onto the ground.",
-              "target_invalid": "Without hesitation, someone {verb_past} the tenant a spare key."
+              "target_valid": "Sometimes, the uncle {verb_pres_3sg} the nephew firmly on the back.",
+              "target_invalid": "Sometimes, the uncle {verb_pres_3sg} the nephew a new notebook."
             }
           }
         },
@@ -3226,12 +3230,12 @@
           ],
           "evaluations": {
             "semantic_forced_choice": {
-              "target_valid": "What happened was that someone exerted sudden physical force on a person.",
-              "target_invalid": "What happened was that someone concluded that a forecast was reliable."
+              "target_valid": "That is to say, to {verb_lemma} denotes jarring another individual through sudden bodily contact.",
+              "target_invalid": "That is to say, to {verb_lemma} denotes routing a tangible object to an intended receiver."
             },
             "held_out_frame": {
-              "target_valid": "Suddenly, someone {verb_past} the attendant aside in the corridor.",
-              "target_invalid": "Suddenly, someone {verb_past} that the forecast was reliable."
+              "target_valid": "Next week, the friend will {verb_lemma} the companion sharply on the arm.",
+              "target_invalid": "Next week, the friend will {verb_lemma} the companion a spare watch."
             }
           }
         },
@@ -3360,12 +3364,12 @@
           ],
           "evaluations": {
             "semantic_forced_choice": {
-              "target_valid": "Thus, one person directly struck or shoved another person during the event.",
-              "target_invalid": "Thus, one person handed a catalog over to a customer at the desk."
+              "target_valid": "Clearly, the word {verb_lemma} refers to applying abrupt bodily force against another person.",
+              "target_invalid": "Clearly, the word {verb_lemma} refers to placing an item into another person's possession."
             },
             "held_out_frame": {
-              "target_valid": "Before the whistle blew, someone {verb_past} the defender hard.",
-              "target_invalid": "Before the whistle blew, someone {verb_past} the customer a catalog."
+              "target_valid": "Otherwise, the artist might {verb_lemma} the pedestrian suddenly with an elbow.",
+              "target_invalid": "Otherwise, the artist might {verb_lemma} the pedestrian a red umbrella."
             }
           }
         }
@@ -3506,12 +3510,12 @@
           ],
           "evaluations": {
             "semantic_forced_choice": {
-              "target_valid": "Cu alte cuvinte, cineva a avut o convingere despre o situație.",
-              "target_invalid": "Cu alte cuvinte, cineva a înmânat un obiect greu unui destinatar."
+              "target_valid": "În acest context, a {verb_lemma} înseamnă a avea convingerea fermă că un lucru este adevărat.",
+              "target_invalid": "În acest context, a {verb_lemma} înseamnă a transmite un obiect concret către o altă persoană."
             },
             "held_out_frame": {
-              "target_valid": "Indiferent dacă era adevărat, cineva a {verb_past_part} că totul conta.",
-              "target_invalid": "Mai târziu în acea zi, cineva i-a {verb_past_part} asistentei o cutie grea."
+              "target_valid": "Ieri, călătorul nu a {verb_past_part} că spectacolul a început devreme.",
+              "target_invalid": "Ieri, călătorul nu i-a {verb_past_part} o monedă mică vărului."
             }
           }
         },
@@ -3648,12 +3652,12 @@
           ],
           "evaluations": {
             "semantic_forced_choice": {
-              "target_valid": "În esență, o persoană și-a format o concluzie mintală despre un eveniment.",
-              "target_invalid": "În esență, o persoană a lovit un alt individ cu o forță fizică bruscă."
+              "target_valid": "Cu alte cuvinte, a {verb_lemma} înseamnă a considera o afirmație sau o idee drept reală.",
+              "target_invalid": "Cu alte cuvinte, a {verb_lemma} înseamnă a preda sau a expedia un lucru unui destinatar."
             },
             "held_out_frame": {
-              "target_valid": "După ce a analizat faptele, cineva a {verb_past_part} că povestea era corectă.",
-              "target_invalid": "În timpul ciocnirii bruște, cineva l-a {verb_past_part} pe rival pe podea."
+              "target_valid": "Uneori, navetistul {verb_pres_3sg} că strada rămâne liberă dimineața.",
+              "target_invalid": "Uneori, navetistul îi {verb_pres_3sg} o agendă nouă nepotului."
             }
           }
         },
@@ -3790,12 +3794,12 @@
           ],
           "evaluations": {
             "semantic_forced_choice": {
-              "target_valid": "Aceasta înseamnă că un observator a susținut o opinie despre cele întâmplate.",
-              "target_invalid": "Aceasta înseamnă că un observator a livrat un colet sigilat unui coleg."
+              "target_valid": "Mai simplu spus, verbul a {verb_lemma} descrie o judecată mintală cu privire la o anumită situație.",
+              "target_invalid": "Mai simplu spus, verbul a {verb_lemma} descrie transferul unui obiect fizic din posesia cuiva spre altcineva."
             },
             "held_out_frame": {
-              "target_valid": "Chiar și fără dovezi directe, cineva a {verb_past_part} că afirmația era validă.",
-              "target_invalid": "Înainte de a părăsi biroul, cineva i-a {verb_past_part} secretarei un dosar sigilat."
+              "target_valid": "Mâine, voluntarul va {verb_lemma} că barca ajunge la timp.",
+              "target_invalid": "Mâine, voluntarul îi va {verb_lemma} o hartă veche prietenului."
             }
           }
         },
@@ -3932,12 +3936,12 @@
           ],
           "evaluations": {
             "semantic_forced_choice": {
-              "target_valid": "Mai simplu spus, cineva a presupus că un anumit fapt era adevărat.",
-              "target_invalid": "Mai simplu spus, cineva a îmbrâncit un trecător departe de intrare."
+              "target_valid": "Mai exact, acțiunea de a {verb_lemma} se referă la o poziție cognitivă față de o propoziție.",
+              "target_invalid": "Mai exact, acțiunea de a {verb_lemma} se referă la punerea unui obiect la dispoziția altei persoane."
             },
             "held_out_frame": {
-              "target_valid": "Chiar de la început, cineva a {verb_past_part} că rezultatul se va schimba.",
-              "target_invalid": "Lângă intrarea îngustă, cineva l-a {verb_past_part} pe paznic cu ambele mâini."
+              "target_valid": "Câteodată, pictorul poate să {verb_subj_3sg} că sala a rămas goală.",
+              "target_invalid": "Câteodată, pictorul poate să îi {verb_subj_3sg} un stilou nou fratelui."
             }
           }
         },
@@ -4074,12 +4078,12 @@
           ],
           "evaluations": {
             "semantic_forced_choice": {
-              "target_valid": "Pe scurt, un individ a avut un gând cu privire la comportamentul cuiva.",
-              "target_invalid": "Pe scurt, un individ a transferat posesia unui obiect către un vecin."
+              "target_valid": "Pe baza exemplelor, a {verb_lemma} înseamnă a presupune că un anumit eveniment s-a petrecut.",
+              "target_invalid": "Pe baza exemplelor, a {verb_lemma} înseamnă a aplica o forță fizică bruscă asupra unei persoane."
             },
             "held_out_frame": {
-              "target_valid": "În ciuda îndoielilor anterioare, cineva a {verb_past_part} că explicația avea sens.",
-              "target_invalid": "La ghișeul din față, cineva i-a {verb_past_part} clientei o chitanță tipărită."
+              "target_valid": "Mai devreme, muzicianul a {verb_past_part} că trenul a oprit brusc.",
+              "target_invalid": "Mai devreme, muzicianul l-a {verb_past_part} din spate pe trecător."
             }
           }
         },
@@ -4216,12 +4220,12 @@
           ],
           "evaluations": {
             "semantic_forced_choice": {
-              "target_valid": "Per ansamblu, cineva a considerat că o anumită stare de fapt avusese loc.",
-              "target_invalid": "Per ansamblu, cineva a doborât cu forță un adversar la pământ."
+              "target_valid": "În aceste enunțuri, a {verb_lemma} înseamnă a susține o opinie cu privire la un fapt.",
+              "target_invalid": "În aceste enunțuri, a {verb_lemma} înseamnă a exercita un impact corporal direct asupra cuiva."
             },
             "held_out_frame": {
-              "target_valid": "La auzul veștii, cineva a {verb_past_part} că întârzierea era inevitabilă.",
-              "target_invalid": "În sala aglomerată, cineva l-a {verb_past_part} pe străin lângă perete."
+              "target_valid": "Deseori, grădinarul nu {verb_pres_3sg} că vremea s-a răcit brusc.",
+              "target_invalid": "Deseori, grădinarul nu îl {verb_pres_3sg} cu umărul pe pieton."
             }
           }
         },
@@ -4358,12 +4362,12 @@
           ],
           "evaluations": {
             "semantic_forced_choice": {
-              "target_valid": "Ceea ce s-a întâmplat a fost că cineva a avut o atitudine epistemică față de o afirmație.",
-              "target_invalid": "Ceea ce s-a întâmplat a fost că cineva a transmis un pachet concret unui curier."
+              "target_valid": "Astfel, verbul a {verb_lemma} exprimă o atitudine epistemică sau o presupunere despre un eveniment.",
+              "target_invalid": "Astfel, verbul a {verb_lemma} exprimă o acțiune fizică directă prin contact brusc cu cineva."
             },
             "held_out_frame": {
-              "target_valid": "În sinea sa, cineva a {verb_past_part} că decizia fusese deja luată.",
-              "target_invalid": "În grabă, cineva i-a {verb_past_part} chiriașei o cheie de rezervă."
+              "target_valid": "Curând, croitorul va {verb_lemma} că magazinul se închide devreme.",
+              "target_invalid": "Curând, croitorul îl va {verb_lemma} cu cotul pe biciclist."
             }
           }
         },
@@ -4500,12 +4504,12 @@
           ],
           "evaluations": {
             "semantic_forced_choice": {
-              "target_valid": "Astfel, un participant a raționat mintal că un eveniment avusese loc.",
-              "target_invalid": "Astfel, un participant a izbit fizic un rival în timpul unei confruntări."
+              "target_valid": "Prin urmare, a {verb_lemma} desemnează formularea unui punct de vedere despre o realitate.",
+              "target_invalid": "Prin urmare, a {verb_lemma} desemnează exercitarea unei presiuni corporale bruște asupra unei alte persoane."
             },
             "held_out_frame": {
-              "target_valid": "După o reflecție atentă, cineva a {verb_past_part} că planul va reuși.",
-              "target_invalid": "Fără niciun avertisment, cineva l-a {verb_past_part} pe adversar în timpul meciului."
+              "target_valid": "Alteori, locatarul ar putea să {verb_subj_3sg} că lumina s-a stins.",
+              "target_invalid": "Alteori, locatarul ar putea să îl {verb_subj_3sg} cu putere pe pasager."
             }
           }
         }
@@ -4644,12 +4648,12 @@
           ],
           "evaluations": {
             "semantic_forced_choice": {
-              "target_valid": "Cu alte cuvinte, cineva a transferat fizic un obiect concret către un destinatar.",
-              "target_invalid": "Cu alte cuvinte, cineva a păstrat în tăcere o convingere mintală despre o idee."
+              "target_valid": "În acest context, a {verb_lemma} înseamnă a transmite un obiect concret către o altă persoană.",
+              "target_invalid": "În acest context, a {verb_lemma} înseamnă a avea convingerea fermă că un lucru este adevărat."
             },
             "held_out_frame": {
-              "target_valid": "Mai târziu, cineva a {verb_past_part} un pachet către asistentă.",
-              "target_invalid": "Mai târziu, cineva a {verb_past_part} că situația era complicată."
+              "target_valid": "Ieri, călătorul nu i-a {verb_past_part} o monedă mică vărului.",
+              "target_invalid": "Ieri, călătorul nu a {verb_past_part} că spectacolul a început devreme."
             }
           }
         },
@@ -4786,12 +4790,12 @@
           ],
           "evaluations": {
             "semantic_forced_choice": {
-              "target_valid": "În esență, o persoană a înmânat un obiect pentru ca o altă persoană să îl primească.",
-              "target_invalid": "În esență, o persoană a lovit un adversar cu o forță fizică bruscă."
+              "target_valid": "Cu alte cuvinte, a {verb_lemma} înseamnă a preda sau a expedia un lucru unui destinatar.",
+              "target_invalid": "Cu alte cuvinte, a {verb_lemma} înseamnă a considera o afirmație sau o idee drept reală."
             },
             "held_out_frame": {
-              "target_valid": "Ulterior, cineva a {verb_past_part} un document către colegă.",
-              "target_invalid": "Ulterior, cineva a {verb_past_part} că martorul plecase deja."
+              "target_valid": "Uneori, navetistul îi {verb_pres_3sg} o agendă nouă nepotului.",
+              "target_invalid": "Uneori, navetistul {verb_pres_3sg} că strada rămâne liberă dimineața."
             }
           }
         },
@@ -4928,12 +4932,12 @@
           ],
           "evaluations": {
             "semantic_forced_choice": {
-              "target_valid": "Aceasta înseamnă că un agent a livrat un lucru tangibil în posesia cuiva.",
-              "target_invalid": "Aceasta înseamnă că un agent a reflectat dacă o afirmație teoretică era validă."
+              "target_valid": "Mai simplu spus, verbul a {verb_lemma} descrie transferul unui obiect fizic din posesia cuiva spre altcineva.",
+              "target_invalid": "Mai simplu spus, verbul a {verb_lemma} descrie o judecată mintală cu privire la o anumită situație."
             },
             "held_out_frame": {
-              "target_valid": "Înainte de prânz, cineva a {verb_past_part} un colet către vecină.",
-              "target_invalid": "Înainte de prânz, cineva a {verb_past_part} că teoria era incorectă."
+              "target_valid": "Mâine, voluntarul îi va {verb_lemma} o hartă veche prietenului.",
+              "target_invalid": "Mâine, voluntarul va {verb_lemma} că barca ajunge la timp."
             }
           }
         },
@@ -5070,12 +5074,12 @@
           ],
           "evaluations": {
             "semantic_forced_choice": {
-              "target_valid": "Mai simplu spus, cineva a transmis un obiect direct unui beneficiar.",
-              "target_invalid": "Mai simplu spus, cineva a îmbrâncit un rival înapoi în timpul unei încăierări."
+              "target_valid": "Mai exact, acțiunea de a {verb_lemma} se referă la punerea unui obiect la dispoziția altei persoane.",
+              "target_invalid": "Mai exact, acțiunea de a {verb_lemma} se referă la o poziție cognitivă față de o propoziție."
             },
             "held_out_frame": {
-              "target_valid": "La intrare, cineva a {verb_past_part} un dosar către secretară.",
-              "target_invalid": "La intrare, cineva a {verb_past_part} că întâlnirea se încheiase."
+              "target_valid": "Câteodată, pictorul poate să îi {verb_subj_3sg} un stilou nou fratelui.",
+              "target_invalid": "Câteodată, pictorul poate să {verb_subj_3sg} că sala a rămas goală."
             }
           }
         },
@@ -5212,12 +5216,12 @@
           ],
           "evaluations": {
             "semantic_forced_choice": {
-              "target_valid": "Pe scurt, un expeditor a oferit un articol concret unui destinatar.",
-              "target_invalid": "Pe scurt, un gânditor a concluzionat mintal că o ipoteză era solidă."
+              "target_valid": "În acest pasaj, a {verb_lemma} înseamnă a face ca un obiect să ajungă la un receptor.",
+              "target_invalid": "În acest pasaj, a {verb_lemma} înseamnă a produce un șoc fizic direct asupra unei persoane."
             },
             "held_out_frame": {
-              "target_valid": "În timpul vizitei, cineva a {verb_past_part} o cutie către oaspete.",
-              "target_invalid": "În timpul vizitei, cineva a {verb_past_part} că vremea se va îmbunătăți."
+              "target_valid": "Adineauri, fratele nu i-a {verb_past_part} vărului un caiet nou.",
+              "target_invalid": "Adineauri, fratele nu l-a {verb_past_part} cu putere pe văr."
             }
           }
         },
@@ -5354,12 +5358,12 @@
           ],
           "evaluations": {
             "semantic_forced_choice": {
-              "target_valid": "Per ansamblu, cineva a dat un obiect fizic unei alte persoane din încăpere.",
-              "target_invalid": "Per ansamblu, cineva a lovit cu putere un adversar în timpul unei altercații."
+              "target_valid": "Formulat direct, verbul a {verb_lemma} indică înmânarea sau expedierea unui bun material către cineva.",
+              "target_invalid": "Formulat direct, verbul a {verb_lemma} indică aplicarea unui contact corporal brusc și puternic asupra cuiva."
             },
             "held_out_frame": {
-              "target_valid": "Exact la timp, cineva a {verb_past_part} un plic către clientă.",
-              "target_invalid": "Exact la timp, cineva a {verb_past_part} că răspunsul era evident."
+              "target_valid": "De obicei, unchiul îi {verb_pres_3sg} nepotului o umbrelă veche.",
+              "target_invalid": "De obicei, unchiul îl {verb_pres_3sg} din greșeală pe nepot cu umărul."
             }
           }
         },
@@ -5496,12 +5500,12 @@
           ],
           "evaluations": {
             "semantic_forced_choice": {
-              "target_valid": "Ceea ce s-a întâmplat a fost că cineva a furnizat un obiect material unui destinatar.",
-              "target_invalid": "Ceea ce s-a întâmplat a fost că cineva s-a îndoit de adevărul unei declarații."
+              "target_valid": "Adică a {verb_lemma} semnifică direcționarea unui lucru concret spre un alt destinatar.",
+              "target_invalid": "Adică a {verb_lemma} semnifică zdruncinarea fizică a unei persoane prin contact direct."
             },
             "held_out_frame": {
-              "target_valid": "Câteva clipe mai târziu, cineva a {verb_past_part} un bilet către călător.",
-              "target_invalid": "Câteva clipe mai târziu, cineva a {verb_past_part} că trenul plecase deja."
+              "target_valid": "Mâine seară, prietenul îi va {verb_lemma} însoțitorului un rucsac mic.",
+              "target_invalid": "Mâine seară, prietenul îl va {verb_lemma} cu forță pe însoțitor."
             }
           }
         },
@@ -5638,12 +5642,12 @@
           ],
           "evaluations": {
             "semantic_forced_choice": {
-              "target_valid": "Astfel, un participant a predat un bun în mâinile unui al doilea participant.",
-              "target_invalid": "Astfel, un participant a împins fizic un al doilea participant pe podea."
+              "target_valid": "În concluzie, verbul a {verb_lemma} arată transferarea unui obiect concret în posesia altei persoane.",
+              "target_invalid": "În concluzie, verbul a {verb_lemma} arată acționarea cu forță mecanică bruscă asupra cuiva."
             },
             "held_out_frame": {
-              "target_valid": "Înainte de plecare, cineva a {verb_past_part} un manual către elevă.",
-              "target_invalid": "Înainte de plecare, cineva a {verb_past_part} că examenul era dificil."
+              "target_valid": "În grabă, artistul poate să îi {verb_subj_3sg} un portofel mic tânărului.",
+              "target_invalid": "În grabă, artistul poate să îl {verb_subj_3sg} cu cotul pe tânăr."
             }
           }
         }
@@ -5774,12 +5778,12 @@
           ],
           "evaluations": {
             "semantic_forced_choice": {
-              "target_valid": "Cu alte cuvinte, cineva a exercitat un impact fizic direct asupra unei alte persoane.",
-              "target_invalid": "Cu alte cuvinte, cineva a avut o convingere abstractă despre un eveniment viitor."
+              "target_valid": "Pe baza exemplelor, a {verb_lemma} înseamnă a aplica o forță fizică bruscă asupra unei persoane.",
+              "target_invalid": "Pe baza exemplelor, a {verb_lemma} înseamnă a presupune că un anumit eveniment s-a petrecut."
             },
             "held_out_frame": {
-              "target_valid": "În timpul confruntării, cineva l-a {verb_past_part} cu putere pe adversar.",
-              "target_invalid": "În timpul confruntării, cineva a {verb_past_part} că argumentul era valid."
+              "target_valid": "Mai devreme, muzicianul l-a {verb_past_part} din spate pe trecător.",
+              "target_invalid": "Mai devreme, muzicianul a {verb_past_part} că trenul a oprit brusc."
             }
           }
         },
@@ -5908,12 +5912,12 @@
           ],
           "evaluations": {
             "semantic_forced_choice": {
-              "target_valid": "În esență, un agent a împins sau a lovit cu forță un individ țintă.",
-              "target_invalid": "În esență, un agent a înmânat un colet împachetat unui destinatar care aștepta."
+              "target_valid": "În aceste enunțuri, a {verb_lemma} înseamnă a exercita un impact corporal direct asupra cuiva.",
+              "target_invalid": "În aceste enunțuri, a {verb_lemma} înseamnă a susține o opinie cu privire la un fapt."
             },
             "held_out_frame": {
-              "target_valid": "Câteva clipe mai târziu, cineva l-a {verb_past_part} brusc pe rival lângă ieșire.",
-              "target_invalid": "Câteva clipe mai târziu, cineva i-a {verb_past_part} asistentei un colet împachetat."
+              "target_valid": "Deseori, grădinarul nu îl {verb_pres_3sg} cu umărul pe pieton.",
+              "target_invalid": "Deseori, grădinarul nu {verb_pres_3sg} că vremea s-a răcit brusc."
             }
           }
         },
@@ -6042,12 +6046,12 @@
           ],
           "evaluations": {
             "semantic_forced_choice": {
-              "target_valid": "Aceasta înseamnă că o persoană a acționat fizic asupra unei alte persoane.",
-              "target_invalid": "Aceasta înseamnă că o persoană a presupus mintal că un raport era corect."
+              "target_valid": "Astfel, verbul a {verb_lemma} exprimă o acțiune fizică directă prin contact brusc cu cineva.",
+              "target_invalid": "Astfel, verbul a {verb_lemma} exprimă o atitudine epistemică sau o presupunere despre un eveniment."
             },
             "held_out_frame": {
-              "target_valid": "În agitația bruscă, cineva l-a {verb_past_part} înapoi pe paznic.",
-              "target_invalid": "În agitația bruscă, cineva a {verb_past_part} că raportul era corect."
+              "target_valid": "Curând, croitorul îl va {verb_lemma} cu cotul pe biciclist.",
+              "target_invalid": "Curând, croitorul va {verb_lemma} că magazinul se închide devreme."
             }
           }
         },
@@ -6176,12 +6180,12 @@
           ],
           "evaluations": {
             "semantic_forced_choice": {
-              "target_valid": "Mai simplu spus, cineva a aplicat o forță fizică directă asupra unei persoane.",
-              "target_invalid": "Mai simplu spus, cineva a livrat un document tipărit unei secretare."
+              "target_valid": "Prin urmare, a {verb_lemma} desemnează exercitarea unei presiuni corporale bruște asupra unei alte persoane.",
+              "target_invalid": "Prin urmare, a {verb_lemma} desemnează formularea unui punct de vedere despre o realitate."
             },
             "held_out_frame": {
-              "target_valid": "Lângă intrare, cineva l-a {verb_past_part} cu ambele mâini pe intrus.",
-              "target_invalid": "Lângă intrare, cineva i-a {verb_past_part} secretarei un document tipărit."
+              "target_valid": "Alteori, locatarul ar putea să îl {verb_subj_3sg} cu putere pe pasager.",
+              "target_invalid": "Alteori, locatarul ar putea să {verb_subj_3sg} că lumina s-a stins."
             }
           }
         },
@@ -6310,12 +6314,12 @@
           ],
           "evaluations": {
             "semantic_forced_choice": {
-              "target_valid": "Pe scurt, un inițiator a lovit fizic un pacient în timpul unei întâlniri.",
-              "target_invalid": "Pe scurt, un inițiator a crezut în sinea sa că o explicație avea sens."
+              "target_valid": "În acest pasaj, a {verb_lemma} înseamnă a produce un șoc fizic direct asupra unei persoane.",
+              "target_invalid": "În acest pasaj, a {verb_lemma} înseamnă a face ca un obiect să ajungă la un receptor."
             },
             "held_out_frame": {
-              "target_valid": "Imediat după gong, cineva l-a {verb_past_part} puternic pe campion în ring.",
-              "target_invalid": "Imediat după gong, cineva a {verb_past_part} că explicația avea sens."
+              "target_valid": "Adineauri, fratele nu l-a {verb_past_part} cu putere pe văr.",
+              "target_invalid": "Adineauri, fratele nu i-a {verb_past_part} vărului un caiet nou."
             }
           }
         },
@@ -6444,12 +6448,12 @@
           ],
           "evaluations": {
             "semantic_forced_choice": {
-              "target_valid": "Per ansamblu, cineva a bruscat sau a lovit cu putere un alt individ.",
-              "target_invalid": "Per ansamblu, cineva a oferit o cheie de rezervă unui chiriaș pe hol."
+              "target_valid": "Formulat direct, verbul a {verb_lemma} indică aplicarea unui contact corporal brusc și puternic asupra cuiva.",
+              "target_invalid": "Formulat direct, verbul a {verb_lemma} indică înmânarea sau expedierea unui bun material către cineva."
             },
             "held_out_frame": {
-              "target_valid": "Fără ezitare, cineva l-a {verb_past_part} la pământ pe fugar.",
-              "target_invalid": "Fără ezitare, cineva i-a {verb_past_part} chiriașei o cheie de rezervă."
+              "target_valid": "De obicei, unchiul îl {verb_pres_3sg} din greșeală pe nepot cu umărul.",
+              "target_invalid": "De obicei, unchiul îi {verb_pres_3sg} nepotului o umbrelă veche."
             }
           }
         },
@@ -6578,12 +6582,12 @@
           ],
           "evaluations": {
             "semantic_forced_choice": {
-              "target_valid": "Ceea ce s-a întâmplat a fost că cineva a exercitat o forță fizică bruscă asupra cuiva.",
-              "target_invalid": "Ceea ce s-a întâmplat a fost că cineva a concluzionat că o prognoză era sigură."
+              "target_valid": "Adică a {verb_lemma} semnifică zdruncinarea fizică a unei persoane prin contact direct.",
+              "target_invalid": "Adică a {verb_lemma} semnifică direcționarea unui lucru concret spre un alt destinatar."
             },
             "held_out_frame": {
-              "target_valid": "Deodată, cineva l-a {verb_past_part} la o parte pe însoțitor pe coridor.",
-              "target_invalid": "Deodată, cineva a {verb_past_part} că prognoza era sigură."
+              "target_valid": "Mâine seară, prietenul îl va {verb_lemma} cu forță pe însoțitor.",
+              "target_invalid": "Mâine seară, prietenul îi va {verb_lemma} însoțitorului un rucsac mic."
             }
           }
         },
@@ -6712,12 +6716,12 @@
           ],
           "evaluations": {
             "semantic_forced_choice": {
-              "target_valid": "Astfel, o persoană a lovit sau a împins direct o altă persoană în timpul evenimentului.",
-              "target_invalid": "Astfel, o persoană a înmânat un catalog unui client la birou."
+              "target_valid": "În concluzie, verbul a {verb_lemma} arată acționarea cu forță mecanică bruscă asupra cuiva.",
+              "target_invalid": "În concluzie, verbul a {verb_lemma} arată transferarea unui obiect concret în posesia altei persoane."
             },
             "held_out_frame": {
-              "target_valid": "Înainte de fluierul final, cineva l-a {verb_past_part} puternic pe fundaș.",
-              "target_invalid": "Înainte de fluierul final, cineva i-a {verb_past_part} clientei un catalog."
+              "target_valid": "În grabă, artistul poate să îl {verb_subj_3sg} cu cotul pe tânăr.",
+              "target_invalid": "În grabă, artistul poate să îi {verb_subj_3sg} un portofel mic tânărului."
             }
           }
         }

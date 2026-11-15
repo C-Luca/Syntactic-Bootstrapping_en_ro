@@ -30,9 +30,13 @@ CONDITIONS = [
     "syntax_rich_ambiguous",
     "cue_conflict",
     "constituent_scrambled",
+    "constituent_scrambled_ambiguous",
     "word_scrambled",
+    "word_scrambled_ambiguous",
     "bow_inflected",
+    "bow_inflected_ambiguous",
     "bow_lemmatized",
+    "bow_lemmatized_ambiguous",
 ]
 
 VERB_CLASSES = [
@@ -149,19 +153,19 @@ def render_shot_sentence(
     if condition in ("syntax_rich_informative", "syntax_rich_ambiguous", "cue_conflict"):
         return canonical_sentence
 
-    if condition == "constituent_scrambled":
+    if condition in ("constituent_scrambled", "constituent_scrambled_ambiguous"):
         order = shot_spec["scrambled_constituent_order"]
         reordered = [constituents[idx] for idx in order]
         return capitalize_sentence(" ".join(reordered)) + "."
 
-    if condition == "word_scrambled":
+    if condition in ("word_scrambled", "word_scrambled_ambiguous"):
         # Tokenize canonical sentence into lowercase words (stripping final period)
         words = " ".join(constituents).lower().split()
         rng = random.Random(f"word_scrambled::{rng_seed_str}")
         shuffled_words = deterministic_shuffle_not_equal(words, rng)
         return " ".join(shuffled_words) + "."
 
-    if condition in ("bow_inflected", "bow_lemmatized"):
+    if condition in ("bow_inflected", "bow_inflected_ambiguous", "bow_lemmatized", "bow_lemmatized_ambiguous"):
         inflected_tokens = [
             tok.format(**slot_values).lower() for tok in shot_spec["bow_inflected_slots"]
         ]
@@ -175,7 +179,7 @@ def render_shot_sentence(
         perm = deterministic_shuffle_not_equal([str(i) for i in indices], rng)
         perm_idx = [int(i) for i in perm]
 
-        if condition == "bow_inflected":
+        if condition in ("bow_inflected", "bow_inflected_ambiguous"):
             chosen = [inflected_tokens[i] for i in perm_idx]
         else:
             chosen = [lemmatized_tokens[i] for i in perm_idx]
@@ -194,7 +198,7 @@ def select_noun_set(
     Select the appropriate noun set for a given verb class, condition, and index (0..4).
     """
     class_sets = lexicon["noun_sets"][verb_class]
-    if condition == "syntax_rich_ambiguous":
+    if condition == "syntax_rich_ambiguous" or condition.endswith("_ambiguous"):
         return class_sets["ambiguous"][noun_idx]
     elif condition == "cue_conflict":
         return class_sets["conflict"][noun_idx]

@@ -6,12 +6,15 @@ Validates `data/benchmark_main.jsonl` and `data/sanity_check.jsonl` against all
 psycholinguistic and structural integrity criteria:
   1. Zero unreplaced placeholders (`{`, `}`, `None`, `null`) in `context_text`, `target_valid`, `target_invalid`.
   2. Schema & Factorial Balance Verification (all 14 schema keys present, exceeding 11-key minimum;
-     exact row-count symmetry across `en` vs `ro`, 3 verb classes, 7 conditions, and 2 evaluation types).
+     exact row-count symmetry across `en` vs `ro`, 3 verb classes, 11 conditions, and 2 evaluation types).
   3. Condition Distinctness (`word_scrambled != syntax_rich_informative`,
-     `constituent_scrambled != syntax_rich_informative`, and in Romanian `bow_inflected != bow_lemmatized`
-     on 100% of paired items, proving morphological lemmatization worked).
-  4. Stray Function-Word Check on Bag-of-Words conditions (`bow_inflected`, `bow_lemmatized`).
+     `constituent_scrambled != syntax_rich_informative`, `bow_inflected != bow_lemmatized` in RO,
+     and the exact same guarantees across all `_ambiguous` counterparts + informative vs ambiguous sets).
+  4. Stray Function-Word Check on all 4 Bag-of-Words conditions (`bow_inflected`, `bow_lemmatized`,
+     and their `_ambiguous` variants).
   5. Unique `trial_id` and non-degenerate targets (`target_valid != target_invalid`).
+  6. Exact Symmetric Mirror-Pair Counterbalancing (for `benchmark_main`) and Verb-Lemma Anchoring
+     + zero control-verb stem leakage inside `semantic_forced_choice`.
 """
 
 from __future__ import annotations
@@ -57,13 +60,28 @@ EXPECTED_CONDITIONS = {
     "syntax_rich_ambiguous",
     "cue_conflict",
     "constituent_scrambled",
+    "constituent_scrambled_ambiguous",
     "word_scrambled",
+    "word_scrambled_ambiguous",
     "bow_inflected",
+    "bow_inflected_ambiguous",
     "bow_lemmatized",
+    "bow_lemmatized_ambiguous",
+}
+BOW_CONDITIONS = {
+    "bow_inflected",
+    "bow_inflected_ambiguous",
+    "bow_lemmatized",
+    "bow_lemmatized_ambiguous",
 }
 EXPECTED_EVAL_TYPES = {
     "semantic_forced_choice",
     "held_out_frame",
+}
+
+CONTROL_VERB_FORBIDDEN_DEFINITIONAL_STEMS = {
+    "en": re.compile(r"\b(think|thinks|thought|believe|believes|believed|give|gives|gave|send|sends|sent|push|pushes|pushed|hit|hits|hitting)\b", re.IGNORECASE),
+    "ro": re.compile(r"\b(crede|crezut|creadă|afirma|afirmă|afirmat|afirme|oferi|oferă|oferit|ofere|trimite|trimis|trimită|trimiterea|împinge|împins|împingă|împingerea|lovi|lovește|lovit|lovească|lovitura|lovituri)\b", re.IGNORECASE),
 }
 
 FORBIDDEN_SUBSTRINGS = ["{", "}"]
@@ -103,6 +121,49 @@ def pair_key(row: Dict[str, Any]) -> Tuple[Any, ...]:
         row["noun_set_id"].split("_")[-1],  # 01..05 index
         row["eval_type"],
     )
+
+
+def _check_pair_distinctness(
+    by_cond_map: Dict[str, Dict[Tuple[Any, ...], str]],
+    cond_a: str,
+    cond_b: str,
+    lang_filter: str | None = None,
+    case_insensitive: bool = True,
+) -> Tuple[bool, str]:
+    """Compare paired context strings across two conditions on all shared pair_keys."""
+    pairs = 0
+    diffs = 0
+    for k, ctx_b in by_cond_map[cond_b].items():
+        if lang_filter is not None and k[0] != lang_filter:
+            continue
+        ctx_a = by_cond_map[cond_a].get(k)
+        if ctx_a is not None:
+            pairs += 1
+            a_cmp = ctx_a.lower() if case_insensitive else ctx_a
+            b_cmp = ctx_b.lower() if case_insensitive else ctx_b
+            if a_cmp != b_cmp:
+                diffs += 1
+    ok = pairs > 0 and diffs == pairs
+    return ok, f"{diffs:,}/{pairs:,} paired contexts strictly differ"
+
+
+def _check_mirror_symmetry(rows: List[Dict[str, Any]]) -> Tuple[bool, str]:
+    """Verify exact 1-to-1 (valid, invalid) <-> (invalid, valid) mirror balance across classes."""
+    grouped: Dict[Tuple[Any, ...], List[Tuple[str, str]]] = collections.defaultdict(list)
+    for r in rows:
+        noun_idx = r["noun_set_id"].split("_")[-1]
+        gkey = (r["language"], r["condition"], r["num_shots"], r["verb_lemma"], noun_idx, r["eval_type"])
+        grouped[gkey].append((r["target_valid"], r["target_invalid"]))
+
+    unmatched = 0
+    total_groups = 0
+    for pairs in grouped.values():
+        total_groups += 1
+        counts = collections.Counter(pairs)
+        for (v, inv), c in counts.items():
+            if counts.get((inv, v), 0) != c:
+                unmatched += c
+    return unmatched == 0 and total_groups > 0, f"{total_groups:,} groups, unmatched_rows={unmatched}"
 
 
 def validate_split(name: str, path: Path) -> Tuple[bool, List[Tuple[str, bool, str]], Dict[str, Any]]:
@@ -179,12 +240,13 @@ def validate_split(name: str, path: Path) -> Tuple[bool, List[Tuple[str, bool, s
     )
 
     # Also check cross-tab balance: (language, verb_class, condition, eval_type)
+    expected_cells = 2 * 3 * len(EXPECTED_CONDITIONS) * 2
     cell_counts = collections.Counter(
         (r["language"], r["verb_class"], r["condition"], r["eval_type"])
         for r in rows
     )
     cells_balanced = (
-        len(cell_counts) == 2 * 3 * 7 * 2
+        len(cell_counts) == expected_cells
         and len(set(cell_counts.values())) == 1
     )
 
@@ -199,9 +261,9 @@ def validate_split(name: str, path: Path) -> Tuple[bool, List[Tuple[str, bool, s
         ", ".join(f"{k}={v:,}" for k, v in sorted(by_class.items())),
     ))
     checks.append((
-        f"[{name}] Condition balance (7 conditions equal)",
+        f"[{name}] Condition balance ({len(EXPECTED_CONDITIONS)} conditions equal)",
         cond_balanced,
-        f"all 7 conditions have {next(iter(by_cond.values())):,} rows each",
+        f"all {len(EXPECTED_CONDITIONS)} conditions have {next(iter(by_cond.values())):,} rows each",
     ))
     checks.append((
         f"[{name}] Evaluation type balance (2 eval_types equal)",
@@ -209,81 +271,91 @@ def validate_split(name: str, path: Path) -> Tuple[bool, List[Tuple[str, bool, s
         ", ".join(f"{k}={v:,}" for k, v in sorted(by_eval.items())),
     ))
     checks.append((
-        f"[{name}] Full 84-cell factorial symmetry (lang x class x cond x eval)",
+        f"[{name}] Full {expected_cells}-cell factorial symmetry (lang x class x cond x eval)",
         cells_balanced,
-        f"84/84 cells populated with {next(iter(cell_counts.values())):,} rows/cell",
+        f"{len(cell_counts)}/{expected_cells} cells populated with {next(iter(cell_counts.values())):,} rows/cell",
     ))
 
-    # Check 5: Condition Distinctness
-    # Group rows by condition and pair_key
+    # Check 5: Condition Distinctness across informative & ambiguous ablations
     by_cond_map: Dict[str, Dict[Tuple[Any, ...], str]] = collections.defaultdict(dict)
     for r in rows:
         by_cond_map[r["condition"]][pair_key(r)] = r["context_text"]
 
-    # 5a: word_scrambled != syntax_rich_informative
-    ws_pairs = 0
-    ws_diffs = 0
-    for k, info_ctx in by_cond_map["syntax_rich_informative"].items():
-        ws_ctx = by_cond_map["word_scrambled"].get(k)
-        if ws_ctx is not None:
-            ws_pairs += 1
-            if ws_ctx.lower() != info_ctx.lower():
-                ws_diffs += 1
-    ws_ok = ws_pairs > 0 and ws_diffs == ws_pairs
-    checks.append((
-        f"[{name}] Condition distinctness: word_scrambled != syntax_rich_informative",
-        ws_ok,
-        f"{ws_diffs:,}/{ws_pairs:,} paired contexts strictly differ",
-    ))
+    distinctness_specs = [
+        ("word_scrambled", "syntax_rich_informative", None, True),
+        ("constituent_scrambled", "syntax_rich_informative", None, True),
+        ("bow_inflected", "bow_lemmatized", "ro", False),
+        ("word_scrambled_ambiguous", "syntax_rich_ambiguous", None, True),
+        ("constituent_scrambled_ambiguous", "syntax_rich_ambiguous", None, True),
+        ("bow_inflected_ambiguous", "bow_lemmatized_ambiguous", "ro", False),
+        ("syntax_rich_ambiguous", "syntax_rich_informative", None, True),
+        ("constituent_scrambled_ambiguous", "constituent_scrambled", None, True),
+        ("word_scrambled_ambiguous", "word_scrambled", None, True),
+        ("bow_inflected_ambiguous", "bow_inflected", None, True),
+        ("bow_lemmatized_ambiguous", "bow_lemmatized", None, True),
+    ]
+    for cond_a, cond_b, lang_filter, ci in distinctness_specs:
+        ok, detail = _check_pair_distinctness(by_cond_map, cond_a, cond_b, lang_filter, ci)
+        scope = f" ({lang_filter.upper()})" if lang_filter else ""
+        checks.append((
+            f"[{name}] Condition distinctness{scope}: {cond_a} != {cond_b}",
+            ok,
+            detail,
+        ))
 
-    # 5b: constituent_scrambled != syntax_rich_informative
-    cs_pairs = 0
-    cs_diffs = 0
-    for k, info_ctx in by_cond_map["syntax_rich_informative"].items():
-        cs_ctx = by_cond_map["constituent_scrambled"].get(k)
-        if cs_ctx is not None:
-            cs_pairs += 1
-            if cs_ctx.lower() != info_ctx.lower():
-                cs_diffs += 1
-    cs_ok = cs_pairs > 0 and cs_diffs == cs_pairs
-    checks.append((
-        f"[{name}] Condition distinctness: constituent_scrambled != syntax_rich_informative",
-        cs_ok,
-        f"{cs_diffs:,}/{cs_pairs:,} paired contexts strictly differ",
-    ))
-
-    # 5c: In Romanian, bow_inflected != bow_lemmatized
-    ro_bow_pairs = 0
-    ro_bow_diffs = 0
-    for k, inf_ctx in by_cond_map["bow_inflected"].items():
-        if k[0] != "ro":
-            continue
-        lem_ctx = by_cond_map["bow_lemmatized"].get(k)
-        if lem_ctx is not None:
-            ro_bow_pairs += 1
-            if inf_ctx != lem_ctx:
-                ro_bow_diffs += 1
-    ro_bow_ok = ro_bow_pairs > 0 and ro_bow_diffs == ro_bow_pairs
-    checks.append((
-        f"[{name}] Condition distinctness (RO): bow_inflected != bow_lemmatized",
-        ro_bow_ok,
-        f"{ro_bow_diffs:,}/{ro_bow_pairs:,} RO paired contexts strictly differ",
-    ))
-
-    # Check 6: Zero stray function words in bow_inflected and bow_lemmatized
+    # Check 6: Zero stray function words across all 4 Bag-of-Words conditions
     stray_fn_count = 0
     for r in rows:
-        if r["condition"] in ("bow_inflected", "bow_lemmatized"):
+        if r["condition"] in BOW_CONDITIONS:
             lang = r["language"]
             forbidden_words = FORBIDDEN_BOW_FUNCTION_WORDS[lang]
             tokens = [t.strip(".") for t in r["context_text"].lower().split()]
             if any(t in forbidden_words for t in tokens):
                 stray_fn_count += 1
     checks.append((
-        f"[{name}] Zero function words/clitics in bow_inflected & bow_lemmatized",
+        f"[{name}] Zero function words/clitics across all 4 BoW conditions",
         stray_fn_count == 0,
         f"stray_function_word_rows={stray_fn_count}",
     ))
+
+    # Check 7: Semantic forced-choice verb-lemma anchoring & zero control-verb stem leakage
+    missing_anchor = 0
+    stem_leaks = 0
+    for r in rows:
+        if r["eval_type"] != "semantic_forced_choice":
+            continue
+        lemma = r["verb_lemma"].lower()
+        lang = r["language"]
+        stem_pat = CONTROL_VERB_FORBIDDEN_DEFINITIONAL_STEMS[lang]
+        for field in ("target_valid", "target_invalid"):
+            text = r[field]
+            tokens = re.findall(r"[^\W\d_]+", text.lower(), flags=re.UNICODE)
+            if lemma not in tokens:
+                missing_anchor += 1
+            # Inspect definitional body after masking any occurrences of the target verb_lemma itself
+            masked = re.sub(rf"\b{re.escape(lemma)}\b", " ", text, flags=re.IGNORECASE)
+            if stem_pat.search(masked):
+                stem_leaks += 1
+
+    checks.append((
+        f"[{name}] Semantic verb-lemma anchoring (lemma in both targets)",
+        missing_anchor == 0,
+        f"missing_anchor_targets={missing_anchor}",
+    ))
+    checks.append((
+        f"[{name}] Zero control-verb stem leakage in semantic definitions",
+        stem_leaks == 0,
+        f"control_stem_leak_targets={stem_leaks}",
+    ))
+
+    # Check 8: Exact 1-to-1 mirror-pair symmetry on pseudoverb split (50.0% no-context chance baseline)
+    if all(r["verb_mode"] == "pseudoverb" for r in rows):
+        mirror_ok, mirror_detail = _check_mirror_symmetry(rows)
+        checks.append((
+            f"[{name}] Exact 1-to-1 mirror symmetry (50.0% no-context baseline)",
+            mirror_ok,
+            mirror_detail,
+        ))
 
     all_passed = all(passed for _, passed, _ in checks)
     stats = {

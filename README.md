@@ -33,8 +33,8 @@ This repository contains the official dataset generation pipeline, lexical and p
 │   ├── generate_dataset.py          # Deterministic (seed=42) benchmark generator
 │   └── validate_dataset.py          # Automated QA and factorial balance verification suite
 └── data/
-    ├── benchmark_main.jsonl         # Main novel-verb benchmark (10,080 rows: 6,720 4-shot + 3,360 1-shot)
-    ├── sanity_check.jsonl           # Real control verb ceiling dataset (1,344 rows)
+    ├── benchmark_main.jsonl         # Main novel-verb benchmark (15,840 rows: 10,560 4-shot + 5,280 1-shot)
+    ├── sanity_check.jsonl           # Real control verb ceiling dataset (2,112 rows)
     ├── dataset_summary_stats.json   # Factorial summary statistics and cell counts
     └── tokenization_report.json     # Subword tokenization report across target multilingual models
 ```
@@ -59,34 +59,40 @@ The benchmark evaluates fast-mapping across **3 distinct verb classes** (each wi
 
 ---
 
-### 3.2 The 7 Experimental Conditions
+### 3.2 The 11 Experimental Conditions
 
-Each template item provides exposure contexts constructed under 7 systematic structural manipulations:
+Each template item provides exposure contexts constructed under 11 systematic structural and lexical manipulations (covering both domain-informative and domain-neutral nouns across syntactic perturbations):
 
 | # | Condition | Linguistic Manipulation | English Example (`en`) | Romanian Example (`ro`) |
 | :- | :--- | :--- | :--- | :--- |
 | **1** | `syntax_rich_informative` | Intact canonical syntax + domain-specific nouns | *The doctor daxed the assistant the folder.* | *Doctorul i-a daxat asistentei dosarul.* |
 | **2** | `syntax_rich_ambiguous` | Intact canonical syntax + domain-general neutral nouns | *The person daxed the neighbor the object.* | *Persoana i-a daxat vecinului obiectul.* |
 | **3** | `cue_conflict` | Intact syntax of Class A + domain nouns from contrasting Class B | *The detective daxed the witness the alibi.* | *Detectivul i-a daxat martorului alibiul.* |
-| **4** | `constituent_scrambled` | Major constituents permuted (OVS / VOS / OSV) | *The assistant the folder daxed the doctor.* | *Asistentei dosarul i-a daxat doctorul.* |
-| **5** | `word_scrambled` | Words randomly shuffled within each sentence | *the daxed doctor folder the the assistant.* | *doctorul asistentei dosarul i-a daxat.* |
-| **6** | `bow_inflected` | Bag-of-words without function words; **inflections preserved** | *assistant doctor folder daxed.* | *asistentei doctorul dosarul daxat.* |
-| **7** | `bow_lemmatized` | Bag-of-words with all words converted to **dictionary lemmas** | *assistant doctor folder dax.* | *asistentă doctor dosar daxa.* |
+| **4** | `constituent_scrambled` | Major constituents permuted (`OVS` / `VOS` / `OSV`) + informative nouns | *The assistant the folder daxed the doctor.* | *Asistentei dosarul i-a daxat doctorul.* |
+| **5** | `constituent_scrambled_ambiguous` | Major constituents permuted + domain-general neutral nouns | *The neighbor the object daxed the person.* | *Vecinului obiectul i-a daxat persoana.* |
+| **6** | `word_scrambled` | Words randomly shuffled within each sentence + informative nouns | *daxed doctor folder the the the assistant.* | *doctorul asistentei dosarul i-a daxat.* |
+| **7** | `word_scrambled_ambiguous` | Words randomly shuffled + domain-general neutral nouns | *daxed person object the the the neighbor.* | *persoana vecinului obiectul i-a daxat.* |
+| **8** | `bow_inflected` | Bag-of-words without function words; **inflections preserved** + informative nouns | *folder assistant doctor daxed.* | *asistentei doctorul dosarul daxat.* |
+| **9** | `bow_inflected_ambiguous` | Bag-of-words without function words; **inflections preserved** + neutral nouns | *object neighbor person daxed.* | *vecinului persoana obiectul daxat.* |
+| **10** | `bow_lemmatized` | Bag-of-words with all words converted to **dictionary lemmas** + informative nouns | *folder assistant doctor dax.* | *asistentă doctor dosar daxa.* |
+| **11** | `bow_lemmatized_ambiguous` | Bag-of-words with all words converted to **dictionary lemmas** + neutral nouns | *object neighbor person dax.* | *vecin persoană obiect daxa.* |
 
-> **Note on BoW Permutation Control:** In `scripts/generate_dataset.py`, `bow_inflected` and `bow_lemmatized` use the exact same deterministic index permutation for each shot, ensuring that any performance differential is driven strictly by morphological suffixes rather than word-order noise.
+> **Note on Ablation Controls:**
+> 1. In `scripts/generate_dataset.py`, `bow_inflected*` and `bow_lemmatized*` share the exact same deterministic word-index permutation for every shot, isolating morphological suffixes from word-order variance.
+> 2. Pairing every structural ablation (`constituent_scrambled`, `word_scrambled`, `bow_inflected`, `bow_lemmatized`) with an `_ambiguous` neutral-noun counterpart decouples pure syntactic/morphological bootstrapping from lexical co-occurrence shortcuts.
 
 ---
 
-### 3.3 Evaluation Tasks
+### 3.3 Evaluation Tasks & Symmetric Mirror Design
 
-Each trial presents the language model with an in-context exposure text (`context_text`) followed by a binary forced-choice evaluation between a valid continuation (`target_valid`) and a foil (`target_invalid`):
+Each trial presents the language model with an in-context exposure text (`context_text`) followed by a binary forced-choice evaluation between a valid continuation (`target_valid`) and a foil (`target_invalid`). All 24 base items per language are organized into **12 exact symmetric mirror pairs** (`4` per class contrast: Mental↔Ditransitive, Mental↔Transitive, Ditransitive↔Transitive), where every `(target_valid, target_invalid)` pair is counterbalanced by its exact reversed swap `(target_invalid, target_valid)` across classes — mathematically guaranteeing a **50.0% no-context chance baseline** on `benchmark_main.jsonl`:
 
-1. **`semantic_forced_choice` (Semantic Paraphrase):** Evaluates verb meaning comprehension.
-   - *Valid:* *"In other words, someone physically transferred a concrete object to a recipient."*
-   - *Foil:* *"In other words, someone silently held a mental belief about a proposition."*
-2. **`held_out_frame` (Syntactic Generalization):** Evaluates structural generalization to an unseen grammatical alternation for that class.
-   - *Valid (Prepositional Dative):* *"Later, someone daxed a package to the assistant."*
-   - *Foil (Epistemic Complement):* *"Later, someone daxed that the situation was complicated."*
+1. **`semantic_forced_choice` (Verb-Anchored Semantic Paraphrase):** Explicitly binds the target verb lemma (`to {verb_lemma} means ...` / `a {verb_lemma} înseamnă ...`) to its semantic class while sharing identical prefixes within each minimal pair and avoiding real control-verb stems.
+   - *Valid (EN):* *"In this context, to dax means to pass or dispatch a concrete item to someone else."*
+   - *Foil (EN):* *"In this context, to dax means to hold a firm view that something is true."*
+2. **`held_out_frame` (Syntactic Generalization):** Tests structural generalization to an unseen tense/mood/alternation (e.g., prepositional dative in EN, varied tense/polarity/word order in RO) using domain-neutral participants and identical prefixes + subjects across both targets.
+   - *Valid (EN, Prepositional Dative):* *"Yesterday, the traveler daxed a spare coin to the cousin."*
+   - *Foil (EN, Epistemic Complement):* *"Yesterday, the traveler daxed that the shop closed early."*
 
 ---
 
@@ -110,22 +116,23 @@ Every line in `data/benchmark_main.jsonl` and `data/sanity_check.jsonl` is a JSO
   "noun_set_id": "info_01",
   "eval_type": "semantic_forced_choice",
   "context_text": "doctorul asistentei dosarul i-a daxat. i-a chirurgul daxat infirmierei fișa...",
-  "target_valid": "Cu alte cuvinte, cineva a transferat fizic un obiect concret către un destinatar.",
-  "target_invalid": "Cu alte cuvinte, cineva a păstrat în tăcere o convingere mintală despre o idee."
+  "target_valid": "În acest context, a daxa înseamnă a transmite un obiect concret către o altă persoană.",
+  "target_invalid": "În acest context, a daxa înseamnă a avea convingerea fermă că un lucru este adevărat."
 }
 ```
 
 ### 4.2 Benchmark Splits
 
-* **`data/benchmark_main.jsonl` (10,080 rows total):**
-  * `language`: 5,040 `en` rows, 5,040 `ro` rows (perfectly balanced).
-  * `verb_class`: 3,360 rows per verb class.
-  * `condition`: 1,440 rows per experimental condition.
-  * `eval_type`: 5,040 `semantic_forced_choice` rows, 5,040 `held_out_frame` rows.
-  * `num_shots`: 6,720 rows in `4-shot` (10 instantiations), 3,360 rows in `1-shot` (5 instantiations).
-  * Factorial coverage: 84 orthogonal cells (`2 languages × 3 classes × 7 conditions × 2 eval types`), each containing exactly 120 trials.
-* **`data/sanity_check.jsonl` (1,344 rows total):**
-  * Uses 2 real control verbs per class (e.g., `think`/`crede`, `give`/`oferi`, `push`/`împinge`) in 4-shot contexts to verify ceiling baseline performance (~85–100%) before evaluating pseudoverbs.
+* **`data/benchmark_main.jsonl` (15,840 rows total):**
+  * `language`: 7,920 `en` rows, 7,920 `ro` rows (perfectly balanced).
+  * `verb_class`: 5,280 rows per verb class.
+  * `condition`: 1,440 rows per experimental condition (`11` conditions total).
+  * `eval_type`: 7,920 `semantic_forced_choice` rows, 7,920 `held_out_frame` rows.
+  * `num_shots`: 10,560 rows in `4-shot` (10 instantiations), 5,280 rows in `1-shot` (5 instantiations).
+  * Factorial coverage: 132 orthogonal cells (`2 languages × 3 classes × 11 conditions × 2 eval types`), each containing exactly 120 trials.
+  * Symmetric mirror counterbalancing: all 24 base items per language form 12 exact mirror pairs across the 3 classes, guaranteeing a **50.0% no-context chance baseline**.
+* **`data/sanity_check.jsonl` (2,112 rows total):**
+  * Uses 2 real control verbs per class (e.g., `think`/`crede`, `give`/`oferi`, `push`/`împinge`) in 4-shot contexts to verify ceiling baseline performance before evaluating pseudoverbs.
 
 ---
 
@@ -134,7 +141,7 @@ Every line in `data/benchmark_main.jsonl` and `data/sanity_check.jsonl` is a JSO
 ### 5.1 Environment Setup
 
 ```bash
-git clone https://github.com/<your-username>/Syntactic-Bootstrapping_en_ro.git
+git clone https://github.com/C-Luca/Syntactic-Bootstrapping_en_ro.git
 cd Syntactic-Bootstrapping_en_ro
 pip install -r requirements.txt
 ```
@@ -163,9 +170,10 @@ To score an autoregressive language model on the benchmark:
    $$\text{seq}_{\text{invalid}} = \text{context\_text} + \text{" "} + \text{target\_invalid}$$
 2. Compute the conditional log-probability of target tokens given the context:
    $$\log P(\text{target} \mid \text{context}) = \sum_{t=1}^{T} \log P(y_t \mid \text{context}, y_{<t})$$
-3. Apply length normalization to mitigate token-length variance:
+3. Compute length-normalized and pointwise mutual information (PMI) scores to control for token-length and unconditional baseline priors:
    $$\text{score}_{\text{norm}} = \frac{1}{T} \sum_{t=1}^{T} \log P(y_t \mid \text{context}, y_{<t})$$
-4. Accuracy is scored as binary correct when $\text{score}(\text{target\_valid}) > \text{score}(\text{target\_invalid})$.
+   $$\text{PMI}(\text{target}; \text{context}) = \log P(\text{target} \mid \text{context}) - \log P(\text{target} \mid \varnothing)$$
+4. Accuracy is scored as binary correct when $\text{score}(\text{target\_valid}) > \text{score}(\text{target\_invalid})$. Because `benchmark_main.jsonl` uses exact mirror-pair counterbalancing across classes, no-context baseline accuracy ($\varnothing$) is guaranteed to equal $50.0\%$.
 
 ---
 
