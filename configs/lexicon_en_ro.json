@@ -1,7 +1,7 @@
 {
   "metadata": {
     "benchmark": "Cross-Lingual Syntactic Bootstrapping (EN vs. RO)",
-    "version": "1.0.0",
+    "version": "2.1.0",
     "languages": [
       "en",
       "ro"
@@ -11,161 +11,162 @@
       "physical_ditransitive",
       "physical_transitive_causative"
     ],
-    "description": "Deterministic morphological and lexical resource for English and Romanian syntactic vs. morphosyntactic verb bootstrapping."
+    "description": "Deterministic morphological and lexical resource for English and Romanian syntactic vs. morphosyntactic verb bootstrapping.",
+    "pseudoverb_generation": "Wuggy (orthographic_english + orthographic_romanian) filtered against all 5 checks of Zhu, McCoy & Frank (2026) Appendix B.3 across all inflected forms."
   },
   "pseudoverbs": {
     "en": [
       {
         "id": "v01",
-        "lemma": "dax",
-        "past": "daxed",
-        "pres_3sg": "daxes",
-        "participle": "daxing"
+        "lemma": "quaft",
+        "past": "quafted",
+        "pres_3sg": "quafts",
+        "participle": "quafting"
       },
       {
         "id": "v02",
-        "lemma": "blick",
-        "past": "blicked",
-        "pres_3sg": "blicks",
-        "participle": "blicking"
+        "lemma": "squank",
+        "past": "squanked",
+        "pres_3sg": "squanks",
+        "participle": "squanking"
       },
       {
         "id": "v03",
-        "lemma": "gorp",
-        "past": "gorped",
-        "pres_3sg": "gorps",
-        "participle": "gorping"
+        "lemma": "snisk",
+        "past": "snisked",
+        "pres_3sg": "snisks",
+        "participle": "snisking"
       },
       {
         "id": "v04",
-        "lemma": "pilk",
-        "past": "pilked",
-        "pres_3sg": "pilks",
-        "participle": "pilking"
+        "lemma": "knimp",
+        "past": "knimped",
+        "pres_3sg": "knimps",
+        "participle": "knimping"
       },
       {
         "id": "v05",
-        "lemma": "zorf",
-        "past": "zorfed",
-        "pres_3sg": "zorfs",
-        "participle": "zorfing"
+        "lemma": "crirt",
+        "past": "crirted",
+        "pres_3sg": "crirts",
+        "participle": "crirting"
       },
       {
         "id": "v06",
-        "lemma": "tunk",
-        "past": "tunked",
-        "pres_3sg": "tunks",
-        "participle": "tunking"
+        "lemma": "drurn",
+        "past": "drurned",
+        "pres_3sg": "drurns",
+        "participle": "drurning"
       },
       {
         "id": "v07",
-        "lemma": "vabe",
-        "past": "vabed",
-        "pres_3sg": "vabes",
-        "participle": "vabing"
+        "lemma": "quond",
+        "past": "quonded",
+        "pres_3sg": "quonds",
+        "participle": "quonding"
       },
       {
         "id": "v08",
-        "lemma": "sarp",
-        "past": "sarped",
-        "pres_3sg": "sarps",
-        "participle": "sarping"
+        "lemma": "clalt",
+        "past": "clalted",
+        "pres_3sg": "clalts",
+        "participle": "clalting"
       },
       {
         "id": "v09",
-        "lemma": "moke",
-        "past": "moked",
-        "pres_3sg": "mokes",
-        "participle": "moking"
+        "lemma": "glont",
+        "past": "glonted",
+        "pres_3sg": "glonts",
+        "participle": "glonting"
       },
       {
         "id": "v10",
-        "lemma": "fendle",
-        "past": "fendled",
-        "pres_3sg": "fendles",
-        "participle": "fendling"
+        "lemma": "blemp",
+        "past": "blemped",
+        "pres_3sg": "blemps",
+        "participle": "blemping"
       }
     ],
     "ro": [
       {
         "id": "v01",
-        "lemma": "daxa",
-        "past_part": "daxat",
-        "pres_3sg": "daxează",
-        "subj_3sg": "daxeze",
-        "participle": "daxând"
+        "lemma": "ognerma",
+        "past_part": "ognermat",
+        "pres_3sg": "ognermează",
+        "subj_3sg": "ognermeze",
+        "participle": "ognermând"
       },
       {
         "id": "v02",
-        "lemma": "blica",
-        "past_part": "blicat",
-        "pres_3sg": "blichează",
-        "subj_3sg": "blicheze",
-        "participle": "blicând"
+        "lemma": "oncina",
+        "past_part": "oncinat",
+        "pres_3sg": "oncinează",
+        "subj_3sg": "oncineze",
+        "participle": "oncinând"
       },
       {
         "id": "v03",
-        "lemma": "gorpa",
-        "past_part": "gorpat",
-        "pres_3sg": "gorpează",
-        "subj_3sg": "gorpeze",
-        "participle": "gorpând"
+        "lemma": "indunta",
+        "past_part": "induntat",
+        "pres_3sg": "induntează",
+        "subj_3sg": "indunteze",
+        "participle": "induntând"
       },
       {
         "id": "v04",
-        "lemma": "pilca",
-        "past_part": "pilcat",
-        "pres_3sg": "pilchează",
-        "subj_3sg": "pilcheze",
-        "participle": "pilcând"
+        "lemma": "meveta",
+        "past_part": "mevetat",
+        "pres_3sg": "mevetează",
+        "subj_3sg": "meveteze",
+        "participle": "mevetând"
       },
       {
         "id": "v05",
-        "lemma": "zorfa",
-        "past_part": "zorfat",
-        "pres_3sg": "zorfează",
-        "subj_3sg": "zorfeze",
-        "participle": "zorfând"
+        "lemma": "favara",
+        "past_part": "favarat",
+        "pres_3sg": "favarează",
+        "subj_3sg": "favareze",
+        "participle": "favarând"
       },
       {
         "id": "v06",
-        "lemma": "tunca",
-        "past_part": "tuncat",
-        "pres_3sg": "tunchează",
-        "subj_3sg": "tuncheze",
-        "participle": "tuncând"
+        "lemma": "curdena",
+        "past_part": "curdenat",
+        "pres_3sg": "curdenează",
+        "subj_3sg": "curdeneze",
+        "participle": "curdenând"
       },
       {
         "id": "v07",
-        "lemma": "vaba",
-        "past_part": "vabat",
-        "pres_3sg": "vabează",
-        "subj_3sg": "vabeze",
-        "participle": "vabând"
+        "lemma": "azacta",
+        "past_part": "azactat",
+        "pres_3sg": "azactează",
+        "subj_3sg": "azacteze",
+        "participle": "azactând"
       },
       {
         "id": "v08",
-        "lemma": "sarpa",
-        "past_part": "sarpat",
-        "pres_3sg": "sarpează",
-        "subj_3sg": "sarpeze",
-        "participle": "sarpând"
+        "lemma": "rezurda",
+        "past_part": "rezurdat",
+        "pres_3sg": "rezurdează",
+        "subj_3sg": "rezurdeze",
+        "participle": "rezurdând"
       },
       {
         "id": "v09",
-        "lemma": "moca",
-        "past_part": "mocat",
-        "pres_3sg": "mochează",
-        "subj_3sg": "mocheze",
-        "participle": "mocând"
+        "lemma": "strimpa",
+        "past_part": "strimpat",
+        "pres_3sg": "strimpează",
+        "subj_3sg": "strimpeze",
+        "participle": "strimpând"
       },
       {
         "id": "v10",
-        "lemma": "fendui",
-        "past_part": "fenduit",
-        "pres_3sg": "fenduiește",
-        "subj_3sg": "fenduiască",
-        "participle": "fenduind"
+        "lemma": "cunmula",
+        "past_part": "cunmulat",
+        "pres_3sg": "cunmulează",
+        "subj_3sg": "cunmuleze",
+        "participle": "cunmulând"
       }
     ]
   },

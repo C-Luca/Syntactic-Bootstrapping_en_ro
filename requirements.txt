@@ -2,6 +2,10 @@
 numpy>=1.26.0
 pandas>=2.1.0
 tqdm>=4.66.0
+wuggy>=1.0.0
+wordfreq>=3.0.0
+cmudict>=1.0.0
+Levenshtein>=0.25.0
 
 # Pretrained Language Models & Subword Tokenization (Person 1 & Person 2)
 torch>=2.2.0

@@ -369,6 +369,57 @@ def validate_split(name: str, path: Path) -> Tuple[bool, List[Tuple[str, bool, s
     return all_passed, checks, stats
 
 
+def validate_pseudoverb_audit(
+    audit_path: Path,
+    main_path: Path,
+) -> List[Tuple[str, bool, str]]:
+    """Verify all EN & RO pseudoverbs in benchmark_main.jsonl pass Wuggy + Appendix B.3 audit."""
+    if not audit_path.exists():
+        return [
+            (
+                "[audit] Wuggy Appendix B.3 pseudoverb audit file exists",
+                False,
+                f"Missing {audit_path}",
+            )
+        ]
+
+    with open(audit_path, "r", encoding="utf-8") as f:
+        audit = json.load(f)
+
+    main_rows = load_jsonl(main_path)
+    dataset_lemmas = {
+        lang: {r["verb_lemma"].lower() for r in main_rows if r["language"] == lang}
+        for lang in ("en", "ro")
+    }
+
+    checks: List[Tuple[str, bool, str]] = []
+    certified = audit.get("certified_v2_1", {})
+    for lang in ("en", "ro"):
+        entries = certified.get(lang, [])
+        all_passed = len(entries) == 10 and all(
+            e.get("passed")
+            and all(e.get(f"rule{i}_ok") for i in range(1, 6))
+            and e.get("min_common_edit_dist", 0) >= 2
+            and not e.get("substring_5plus_hits")
+            and e.get("min_ctrl_stem_dist", 0) >= 2
+            and e.get("min_ctrl_past_dist", 0) >= 3
+            for e in entries
+        )
+        certified_lemmas = {e["forms"]["lemma"].lower() for e in entries}
+        matches_dataset = certified_lemmas == dataset_lemmas[lang]
+        checks.append((
+            f"[audit] {lang.upper()} 10/10 pseudoverbs pass Wuggy + B.3 checks",
+            all_passed,
+            f"certified={len(entries)}, passed={sum(1 for e in entries if e.get('passed'))}",
+        ))
+        checks.append((
+            f"[audit] {lang.upper()} dataset pseudoverbs match certified B.3 set",
+            matches_dataset,
+            f"dataset_lemmas={sorted(dataset_lemmas[lang])}",
+        ))
+    return checks
+
+
 def print_summary_table(name: str, stats: Dict[str, Any]) -> None:
     print(f"\n--- Summary Breakdown: {name} (Total: {stats['total_rows']:,} rows) ---")
     print(f"  Languages  : " + ", ".join(f"{k}={v:,}" for k, v in sorted(stats["by_language"].items())))
@@ -398,6 +449,12 @@ def main() -> None:
         default=Path("data/sanity_check.jsonl"),
         help="Path to sanity check JSONL.",
     )
+    parser.add_argument(
+        "--audit-file",
+        type=Path,
+        default=Path("data/pseudoverb_wuggy_audit.json"),
+        help="Path to Wuggy Appendix B.3 pseudoverb audit JSON.",
+    )
     args = parser.parse_args()
 
     print("=" * 96)
@@ -406,8 +463,10 @@ def main() -> None:
 
     main_ok, main_checks, main_stats = validate_split("benchmark_main.jsonl", args.main_file)
     sanity_ok, sanity_checks, sanity_stats = validate_split("sanity_check.jsonl", args.sanity_file)
+    audit_checks = validate_pseudoverb_audit(args.audit_file, args.main_file)
+    audit_ok = all(passed for _, passed, _ in audit_checks)
 
-    all_checks = main_checks + sanity_checks
+    all_checks = main_checks + sanity_checks + audit_checks
     for label, passed, detail in all_checks:
         status = "PASS" if passed else "FAIL"
         print(f"[{status}] {label:<72} | {detail}")
@@ -415,7 +474,7 @@ def main() -> None:
     print_summary_table("benchmark_main.jsonl", main_stats)
     print_summary_table("sanity_check.jsonl", sanity_stats)
 
-    overall_ok = main_ok and sanity_ok
+    overall_ok = main_ok and sanity_ok and audit_ok
     print("\n" + "=" * 96)
     if overall_ok:
         print("OVERALL VALIDATION RESULT: PASS (100% of integrity & psycholinguistic checks succeeded)")

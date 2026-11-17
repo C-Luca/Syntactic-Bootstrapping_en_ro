@@ -26,16 +26,23 @@ This repository contains the official dataset generation pipeline, lexical and p
 ├── requirements.txt                 # Python dependencies
 ├── .gitignore                       # Standard ignore rules
 ├── configs/
-│   ├── lexicon_en_ro.json           # Morphological paradigms, pseudoverbs, controls, and inflected noun sets
+│   ├── lexicon_en_ro.json           # Morphological paradigms, Wuggy B.3 pseudoverbs, controls, and noun sets
 │   └── templates_en_ro.json         # 48 parallel base items (24 EN + 24 RO), 4 shots/item, 2 eval pairs/item
+├── plugins/
+│   └── orthographic_romanian/       # Custom Romanian Wuggy language plugin (BaseLanguagePlugin)
+│       ├── orthographic_romanian.py # Sub-syllabic vocalic nucleus & transition rules for Romanian
+│       ├── build_romanian_lexicon.py# Wordfreq-based Romanian syllabifier (25,000 entries)
+│       └── orthographic_romanian.txt# Syllabified Romanian lexicon for Wuggy BigramChain
 ├── scripts/
+│   ├── generate_and_verify_pseudoverbs.py  # Wuggy candidate search + Zhu et al. (2026) Appendix B.3 filter
 │   ├── verify_tokenization.py       # Subword tokenization inspector (live HF AutoTokenizer + offline fallback)
 │   ├── generate_dataset.py          # Deterministic (seed=42) benchmark generator
-│   └── validate_dataset.py          # Automated QA and factorial balance verification suite
+│   └── validate_dataset.py          # Automated QA, factorial balance, mirror symmetry, and B.3 audit suite
 └── data/
     ├── benchmark_main.jsonl         # Main novel-verb benchmark (15,840 rows: 10,560 4-shot + 5,280 1-shot)
     ├── sanity_check.jsonl           # Real control verb ceiling dataset (2,112 rows)
     ├── dataset_summary_stats.json   # Factorial summary statistics and cell counts
+    ├── pseudoverb_wuggy_audit.json  # Wuggy & Appendix B.3 audit report (legacy vs. certified v2.1 verbs)
     └── tokenization_report.json     # Subword tokenization report across target multilingual models
 ```
 
@@ -45,17 +52,26 @@ This repository contains the official dataset generation pipeline, lexical and p
 
 ### 3.1 Verb Classes
 
-The benchmark evaluates fast-mapping across **3 distinct verb classes** (each with 10 phonotactically valid pseudoverbs and 2 real control verbs per language):
+The benchmark evaluates fast-mapping across **3 distinct verb classes** (each paired with 10 Wuggy-generated pseudoverbs certified under Zhu, McCoy & Frank 2026 Appendix B.3, plus 2 real control verbs per language):
 
 1. **`mental_epistemic` (Belief / Attitude):** Sentential complement frame.
-   - *EN:* `NP1 [V_past] that NP2 [VP_past]` (*"The detective daxed that the witness lied."*)
-   - *RO:* `NP1_nom a [V_part] că NP2_nom [VP_past]` (*"Detectivul a daxat că martorul a mințit."*)
+   - *EN:* `NP1 [V_past] that NP2 [VP_past]` (*"The detective quafted that the witness lied."*)
+   - *RO:* `NP1_nom a [V_part] că NP2_nom [VP_past]` (*"Detectivul a ognermat că martorul a mințit."*)
 2. **`physical_ditransitive` (Physical Transfer of Possession):** Double-object / Dative frame.
-   - *EN:* `NP1 [V_past] NP2_recipient NP3_theme` (*"The doctor daxed the assistant the folder."*)
-   - *RO:* `NP1_nom i-a [V_part] NP2_dat NP3_acc` (*"Doctorul i-a daxat asistentei dosarul."*)
+   - *EN:* `NP1 [V_past] NP2_recipient NP3_theme` (*"The doctor quafted the assistant the folder."*)
+   - *RO:* `NP1_nom i-a [V_part] NP2_dat NP3_acc` (*"Doctorul i-a ognermat asistentei dosarul."*)
 3. **`physical_transitive_causative` (Physical Force / Impact on Animate Patient):** Transitive frame.
-   - *EN:* `NP1 [V_past] NP2_patient` (*"The chef daxed the waiter."*)
-   - *RO:* `NP1_nom l-a [V_part] pe NP2_acc` (*"Bucătarul l-a daxat pe ospătar."*)
+   - *EN:* `NP1 [V_past] NP2_patient` (*"The chef quafted the waiter."*)
+   - *RO:* `NP1_nom l-a [V_part] pe NP2_acc` (*"Bucătarul l-a ognermat pe ospătar."*)
+
+#### Wuggy Pseudoverb Generation & Appendix B.3 Filtering
+
+All 10 English pseudoverbs (`quaft`, `squank`, `snisk`, `knimp`, `crirt`, `drurn`, `quond`, `clalt`, `glont`, `blemp`) and 10 Romanian pseudoverbs (`ognerma`, `oncina`, `indunta`, `meveta`, `favara`, `curdena`, `azacta`, `rezurda`, `strimpa`, `cunmula`) are generated via Wuggy (`orthographic_english` and our custom `plugins/orthographic_romanian` plugin) and pass all 5 rules of Zhu, McCoy & Frank (2026) Appendix B.3 across **all inflected forms**:
+1. Not a real word (`CMUdict` / Romanian lexicon absent, `wordfreq` Zipf `< 1.5`).
+2. Minimum Levenshtein distance `>= 2` from common words (`top 25k`) and no contiguous real-word substring of length `>= 5`.
+3. Stem edit distance `>= 2` and past/participle edit distance `>= 3` from every real control verb.
+4. Language-authentic phonotactics matching source verb stem lengths (`+-1` letter) via Wuggy BigramChain transitions.
+5. Mutual uniqueness across all 10 selected stems and zero collision with benchmark nouns/verbs.
 
 ---
 
@@ -65,17 +81,17 @@ Each template item provides exposure contexts constructed under 11 systematic st
 
 | # | Condition | Linguistic Manipulation | English Example (`en`) | Romanian Example (`ro`) |
 | :- | :--- | :--- | :--- | :--- |
-| **1** | `syntax_rich_informative` | Intact canonical syntax + domain-specific nouns | *The doctor daxed the assistant the folder.* | *Doctorul i-a daxat asistentei dosarul.* |
-| **2** | `syntax_rich_ambiguous` | Intact canonical syntax + domain-general neutral nouns | *The person daxed the neighbor the object.* | *Persoana i-a daxat vecinului obiectul.* |
-| **3** | `cue_conflict` | Intact syntax of Class A + domain nouns from contrasting Class B | *The detective daxed the witness the alibi.* | *Detectivul i-a daxat martorului alibiul.* |
-| **4** | `constituent_scrambled` | Major constituents permuted (`OVS` / `VOS` / `OSV`) + informative nouns | *The assistant the folder daxed the doctor.* | *Asistentei dosarul i-a daxat doctorul.* |
-| **5** | `constituent_scrambled_ambiguous` | Major constituents permuted + domain-general neutral nouns | *The neighbor the object daxed the person.* | *Vecinului obiectul i-a daxat persoana.* |
-| **6** | `word_scrambled` | Words randomly shuffled within each sentence + informative nouns | *daxed doctor folder the the the assistant.* | *doctorul asistentei dosarul i-a daxat.* |
-| **7** | `word_scrambled_ambiguous` | Words randomly shuffled + domain-general neutral nouns | *daxed person object the the the neighbor.* | *persoana vecinului obiectul i-a daxat.* |
-| **8** | `bow_inflected` | Bag-of-words without function words; **inflections preserved** + informative nouns | *folder assistant doctor daxed.* | *asistentei doctorul dosarul daxat.* |
-| **9** | `bow_inflected_ambiguous` | Bag-of-words without function words; **inflections preserved** + neutral nouns | *object neighbor person daxed.* | *vecinului persoana obiectul daxat.* |
-| **10** | `bow_lemmatized` | Bag-of-words with all words converted to **dictionary lemmas** + informative nouns | *folder assistant doctor dax.* | *asistentă doctor dosar daxa.* |
-| **11** | `bow_lemmatized_ambiguous` | Bag-of-words with all words converted to **dictionary lemmas** + neutral nouns | *object neighbor person dax.* | *vecin persoană obiect daxa.* |
+| **1** | `syntax_rich_informative` | Intact canonical syntax + domain-specific nouns | *The doctor quafted the assistant the folder.* | *Doctorul i-a ognermat asistentei dosarul.* |
+| **2** | `syntax_rich_ambiguous` | Intact canonical syntax + domain-general neutral nouns | *The person quafted the neighbor the object.* | *Persoana i-a ognermat vecinului obiectul.* |
+| **3** | `cue_conflict` | Intact syntax of Class A + domain nouns from contrasting Class B | *The detective quafted the witness the alibi.* | *Detectivul i-a ognermat martorului alibiul.* |
+| **4** | `constituent_scrambled` | Major constituents permuted (`OVS` / `VOS` / `OSV`) + informative nouns | *The assistant the folder quafted the doctor.* | *Asistentei dosarul i-a ognermat doctorul.* |
+| **5** | `constituent_scrambled_ambiguous` | Major constituents permuted + domain-general neutral nouns | *The neighbor the object quafted the person.* | *Vecinului obiectul i-a ognermat persoana.* |
+| **6** | `word_scrambled` | Words randomly shuffled within each sentence + informative nouns | *quafted doctor folder the the the assistant.* | *doctorul asistentei dosarul i-a ognermat.* |
+| **7** | `word_scrambled_ambiguous` | Words randomly shuffled + domain-general neutral nouns | *quafted person object the the the neighbor.* | *persoana vecinului obiectul i-a ognermat.* |
+| **8** | `bow_inflected` | Bag-of-words without function words; **inflections preserved** + informative nouns | *folder assistant doctor quafted.* | *asistentei doctorul dosarul ognermat.* |
+| **9** | `bow_inflected_ambiguous` | Bag-of-words without function words; **inflections preserved** + neutral nouns | *object neighbor person quafted.* | *vecinului persoana obiectul ognermat.* |
+| **10** | `bow_lemmatized` | Bag-of-words with all words converted to **dictionary lemmas** + informative nouns | *folder assistant doctor quaft.* | *asistentă doctor dosar ognerma.* |
+| **11** | `bow_lemmatized_ambiguous` | Bag-of-words with all words converted to **dictionary lemmas** + neutral nouns | *object neighbor person quaft.* | *vecin persoană obiect ognerma.* |
 
 > **Note on Ablation Controls:**
 > 1. In `scripts/generate_dataset.py`, `bow_inflected*` and `bow_lemmatized*` share the exact same deterministic word-index permutation for every shot, isolating morphological suffixes from word-order variance.
@@ -88,11 +104,11 @@ Each template item provides exposure contexts constructed under 11 systematic st
 Each trial presents the language model with an in-context exposure text (`context_text`) followed by a binary forced-choice evaluation between a valid continuation (`target_valid`) and a foil (`target_invalid`). All 24 base items per language are organized into **12 exact symmetric mirror pairs** (`4` per class contrast: Mental↔Ditransitive, Mental↔Transitive, Ditransitive↔Transitive), where every `(target_valid, target_invalid)` pair is counterbalanced by its exact reversed swap `(target_invalid, target_valid)` across classes — mathematically guaranteeing a **50.0% no-context chance baseline** on `benchmark_main.jsonl`:
 
 1. **`semantic_forced_choice` (Verb-Anchored Semantic Paraphrase):** Explicitly binds the target verb lemma (`to {verb_lemma} means ...` / `a {verb_lemma} înseamnă ...`) to its semantic class while sharing identical prefixes within each minimal pair and avoiding real control-verb stems.
-   - *Valid (EN):* *"In this context, to dax means to pass or dispatch a concrete item to someone else."*
-   - *Foil (EN):* *"In this context, to dax means to hold a firm view that something is true."*
+   - *Valid (EN):* *"In this context, to quaft means to pass or dispatch a concrete item to someone else."*
+   - *Foil (EN):* *"In this context, to quaft means to hold a firm view that something is true."*
 2. **`held_out_frame` (Syntactic Generalization):** Tests structural generalization to an unseen tense/mood/alternation (e.g., prepositional dative in EN, varied tense/polarity/word order in RO) using domain-neutral participants and identical prefixes + subjects across both targets.
-   - *Valid (EN, Prepositional Dative):* *"Yesterday, the traveler daxed a spare coin to the cousin."*
-   - *Foil (EN, Epistemic Complement):* *"Yesterday, the traveler daxed that the shop closed early."*
+   - *Valid (EN, Prepositional Dative):* *"Yesterday, the traveler quafted a spare coin to the cousin."*
+   - *Foil (EN, Epistemic Complement):* *"Yesterday, the traveler quafted that the shop closed early."*
 
 ---
 
@@ -111,13 +127,13 @@ Every line in `data/benchmark_main.jsonl` and `data/sanity_check.jsonl` is a JSO
   "template_id": "item_01",
   "condition": "word_scrambled",
   "num_shots": 4,
-  "verb_lemma": "daxa",
-  "verb_surface": "daxat",
+  "verb_lemma": "ognerma",
+  "verb_surface": "ognermat",
   "noun_set_id": "info_01",
   "eval_type": "semantic_forced_choice",
-  "context_text": "doctorul asistentei dosarul i-a daxat. i-a chirurgul daxat infirmierei fișa...",
-  "target_valid": "În acest context, a daxa înseamnă a transmite un obiect concret către o altă persoană.",
-  "target_invalid": "În acest context, a daxa înseamnă a avea convingerea fermă că un lucru este adevărat."
+  "context_text": "doctorul asistentei dosarul i-a ognermat. i-a chirurgul ognermat infirmierei fișa...",
+  "target_valid": "În acest context, a ognerma înseamnă a transmite un obiect concret către o altă persoană.",
+  "target_invalid": "În acest context, a ognerma înseamnă a avea convingerea fermă că un lucru este adevărat."
 }
 ```
 
@@ -149,13 +165,17 @@ pip install -r requirements.txt
 ### 5.2 Reproducing the Benchmark Datasets
 
 ```bash
+# 0. Build Romanian Wuggy lexicon & generate/verify pseudoverbs (already committed in lexicon_en_ro.json)
+python plugins/orthographic_romanian/build_romanian_lexicon.py
+python scripts/generate_and_verify_pseudoverbs.py
+
 # 1. Deterministically generate data/benchmark_main.jsonl and data/sanity_check.jsonl
 python scripts/generate_dataset.py
 
 # 2. Inspect pseudoverb subword tokenization across target LLM tokenizers
 python scripts/verify_tokenization.py
 
-# 3. Execute the automated QA verification suite (verifies 100% test passage)
+# 3. Execute the automated QA verification suite (verifies 100% test passage + Appendix B.3 audit)
 python scripts/validate_dataset.py
 ```
 
